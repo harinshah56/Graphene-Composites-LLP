@@ -1,0 +1,24 @@
+packages:
+  "framer-motion": "For page transitions and scroll-triggered animations to give a premium feel"
+  "react-hook-form": "For robust contact form handling"
+  "@hookform/resolvers": "For Zod schema validation in the contact form"
+  "zod": "For defining contact form data schema"
+  "lucide-react": "For crisp icons across the site"
+
+images:
+  - path: "artifacts/graphene-composites/public/images/hero-bg.png"
+    description: "High-tech industrial manufacturing facility interior, clean, modern, with subtle glowing green accents, wide angle, deep charcoal shadows"
+    aspect_ratio: "16:9"
+  - path: "artifacts/graphene-composites/public/images/pultrusion.png"
+    description: "Abstract macro shot of fiberglass carbon fiber composite material weaving through a clean industrial machine, studio lighting, corporate"
+    aspect_ratio: "16:9"
+  - path: "artifacts/graphene-composites/public/images/quality.png"
+    description: "Precision measurement laser scanning a composite part in a clean white laboratory setting, high tech industrial"
+    aspect_ratio: "16:9"
+  - path: "artifacts/graphene-composites/public/images/facility.png"
+    description: "Exterior of a massive modern manufacturing facility, clean architecture, sunny day, corporate industrial park"
+    aspect_ratio: "16:9"
+
+notes:
+  - "Pure static frontend site. No backend API integration required."
+  - "All content is hardcoded based on the provided corporate profile."

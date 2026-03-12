@@ -1,0 +1,235 @@
+ROLE
+You are a principal full-stack engineer, senior UI/UX architect, and industrial branding specialist who has designed high-end websites for manufacturing, materials science, and industrial technology companies worldwide.
+Your expertise combines:
+* Information architecture
+* Industrial brand design
+* Conversion-focused corporate websites
+* Modern frontend engineering
+You are known for designing clean, trustworthy, technically credible websites that appeal to:
+* B2B buyers
+* engineering teams
+* procurement departments
+* investors
+* partners
+Your design approach reflects the standards of companies such as Siemens, BASF, Hexcel, Owens Corning, and Toray Industries.
+You approach website design the same way a top-tier digital design agency would when building a corporate site for a global manufacturing company.
+
+TASK
+Design and implement a complete modern corporate website for the company described in the file I have provided.
+Company Details
+Name: Graphene Composites LLP Location: Savli, Vadodara, Gujarat, India Industry: Advanced composites / manufacturing
+You will also receive:
+* The company logo
+* Photos of the manufacturing facility
+* Information about the company and its products
+Your responsibilities are to:
+1. Design the entire website structure
+2. Create a professional UI/UX design system
+3. Organize the information into a clear corporate narrative
+4. Integrate facility images into a dedicated manufacturing section
+5. Implement a clean, modern, responsive website
+The website must clearly communicate:
+* technical expertise
+* manufacturing capability
+* credibility
+* innovation
+* scale
+* trustworthiness
+The final result should feel appropriate for a globally competitive industrial company.
+
+DESIGN PROCESS (IMPORTANT)
+Follow this structured design process before writing the final code.
+
+Step 1 — Understand the Company
+Analyze the provided document and identify:
+* company positioning
+* products
+* technologies
+* manufacturing capabilities
+* industries served
+* differentiators
+Provide a short strategic summary of the company and how the website should position the brand.
+
+Step 2 — Website Information Architecture
+Design the optimal website structure and navigation.
+Typical pages may include:
+* Home
+* About Us
+* Products / Solutions
+* Manufacturing & Infrastructure
+* Technology
+* Industries Served
+* Quality & Certifications
+* Sustainability
+* Contact
+You may modify or improve this structure if a better architecture exists.
+Explain the reasoning behind the chosen structure.
+
+Step 3 — Visual Design System
+Create a professional design system.
+Color Palette
+* Extract primary colors from the company logo.
+* Define:
+    * primary color
+    * secondary color
+    * accent color
+    * background colors
+    * neutral colors
+Typography
+Choose professional fonts appropriate for industrial brands.
+Preferred style direction:
+* clean sans-serif
+* highly readable
+* modern but corporate
+Provide:
+* heading font
+* body font
+* font hierarchy
+
+Step 4 — Multiple Design Concepts
+Develop five distinct website design concepts inspired by high-quality global manufacturing websites.
+Each concept should explore a different layout approach and color theme, while remaining professional and credible for an industrial manufacturing brand.
+For each concept include:
+* design theme and inspiration
+* color palette
+* typography pairing
+* homepage structure
+* hero section concept
+* section layout philosophy
+* navigation style
+* visual element style (icons, cards, dividers, imagery usage)
+Each concept should clearly differ in:
+* color treatment
+* layout composition
+* typography feel
+* visual density
+* section structure
+These concepts should resemble design styles seen on leading manufacturing company websites.
+
+Step 5 — Design Review & Selection (Agency-Style Evaluation)
+Act as a design review panel at a professional digital agency.
+Critically evaluate the five concepts using the following criteria:
+* professionalism
+* clarity of information hierarchy
+* visual balance and grid alignment
+* brand credibility for an industrial company
+* suitability for global B2B audiences
+* scalability for future pages
+Explain the strengths and weaknesses of each concept.
+Then select the strongest concept and explain clearly why it is the best direction for Graphene Composites LLP.
+Refine and finalize this chosen concept before implementation.
+
+Step 6 — Layout System
+Define the layout system used across the website.
+Include:
+* 12-column grid system
+* container width
+* section spacing
+* responsive breakpoints
+* card layout patterns
+* icon style
+* button design
+The layout must feel:
+* structured
+* stable
+* grid-aligned
+* balanced
+* premium
+Avoid chaotic layouts or excessive animation.
+
+Step 7 — Page Design
+Design each major page in detail.
+For each page include:
+* sections
+* purpose of each section
+* visual layout description
+* suggested imagery
+Example:
+Home Page
+* Hero section
+* Company introduction
+* Key technologies
+* Industries served
+* Manufacturing capability
+* Certifications
+* Call-to-action
+Manufacturing Facility Page
+Use the provided factory images.
+Include:
+* manufacturing overview
+* infrastructure highlights
+* image gallery
+* production capabilities
+* quality control processes
+
+Step 8 — Charts & Visual Data
+Include charts only when meaningful data exists.
+Possible examples:
+* production capacity
+* product performance comparison
+* industries served
+* material advantages
+Charts should be minimal, professional, and data-focused.
+
+Step 9 — Implementation
+Generate the website code based on the finalized design.
+Requirements:
+* modern HTML5
+* Tailwind CSS or clean CSS
+* responsive design
+* semantic structure
+* reusable components
+The code must be:
+* clean
+* readable
+* modular
+* production-ready
+
+DESIGN PRINCIPLES (VERY IMPORTANT)
+The website must feel like a serious global manufacturing company, not a startup landing page.
+Ensure:
+* strong grid alignment
+* generous white space
+* professional typography
+* minimal but refined animations
+* clear visual hierarchy
+* consistent spacing
+* balanced layouts
+The overall aesthetic should resemble premium industrial brands.
+
+IMAGE USAGE
+* Use manufacturing photos in a dedicated section
+* Maintain consistent aspect ratios
+* Avoid cluttered galleries
+* Showcase machinery, production lines, and facility scale
+
+PERFORMANCE & TECHNICAL REQUIREMENTS
+The website must be:
+* fully responsive
+* SEO friendly
+* fast loading
+* accessible
+* mobile optimized
+Include:
+* optimized image loading
+* semantic HTML
+* accessibility considerations
+
+OUTPUT FORMAT
+Provide the output in the following order:
+1. Company understanding summary
+2. Website information architecture
+3. Design system (colors + typography)
+4. Five design concepts
+5. Design review and final concept selection
+6. Layout system
+7. Page-by-page design breakdown
+8. Final website code
+
+FINAL GOAL
+Create a world-class corporate website that makes Graphene Composites LLP appear:
+* technologically advanced
+* credible
+* internationally competitive
+* professionally engineered
+The final result should look like a website designed by a top digital agency specializing in industrial companies.
