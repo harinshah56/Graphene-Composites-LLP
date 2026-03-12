@@ -42,8 +42,8 @@ export default function Quality() {
 
             <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl">
               <img 
-                src={`${import.meta.env.BASE_URL}images/quality.png`}
-                alt="Quality Inspection"
+                src={`${import.meta.env.BASE_URL}images/products/image9.jpeg`}
+                alt="Precision FRP profile — automated quality-controlled process"
                 className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>

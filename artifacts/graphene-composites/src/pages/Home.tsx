@@ -21,8 +21,8 @@ export default function Home() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src={`${import.meta.env.BASE_URL}images/hero-bg.png`} 
-            alt="Advanced Manufacturing Facility" 
+            src={`${import.meta.env.BASE_URL}images/products/image11.jpeg`} 
+            alt="Graphene Composites Manufacturing Facility" 
             className="w-full h-full object-cover opacity-40 mix-blend-overlay"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/90 to-transparent" />
@@ -137,8 +137,8 @@ export default function Home() {
             >
               <div className="absolute inset-0 bg-primary/10 translate-x-4 translate-y-4 rounded-2xl -z-10" />
               <img 
-                src={`${import.meta.env.BASE_URL}images/pultrusion.png`}
-                alt="Advanced Pultrusion Process"
+                src={`${import.meta.env.BASE_URL}images/products/image13.jpeg`}
+                alt="Graphene Composites LLP — Savli Facility"
                 className="rounded-2xl shadow-2xl w-full object-cover aspect-[4/3]"
               />
               {/* Floating badge */}
@@ -164,18 +164,24 @@ export default function Home() {
             {[
               {
                 title: "Pultruded Profiles",
-                desc: "20 automated lines producing standard and custom shapes (I-Beams, Channels, Angles) for structural applications.",
-                link: "/products#pultrusion"
+                desc: "20 automated lines producing standard and custom shapes (I-Beams, Channels, Angles) for structural and cooling tower applications.",
+                link: "/products#pultrusion",
+                img: `${import.meta.env.BASE_URL}images/products/image10.jpeg`,
+                imgAlt: "Pultruded FRP square tube profiles"
               },
               {
                 title: "Custom Moulding",
                 desc: "Specialized in Nacelle Covers for Wind Energy using Infusion, Hand Lay-up, and Vacuum Bagging techniques.",
-                link: "/products#moulding"
+                link: "/products#moulding",
+                img: `${import.meta.env.BASE_URL}images/products/image6.jpeg`,
+                imgAlt: "FRP wind turbine nacelle covers"
               },
               {
                 title: "Molded FRP Grating",
-                desc: "High-strength, corrosion-resistant grating panels available in various resins, colors, and surface finishes.",
-                link: "/products#grating"
+                desc: "High-strength, corrosion-resistant grating panels in various resins, colors, mesh sizes, and surface finishes.",
+                link: "/products#grating",
+                img: `${import.meta.env.BASE_URL}images/products/image2.jpeg`,
+                imgAlt: "Colorful FRP molded grating panels"
               }
             ].map((prod, i) => (
               <motion.div 
@@ -186,14 +192,17 @@ export default function Home() {
                 transition={{ delay: i * 0.15 }}
               >
                 <Card className="h-full group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-border/50 overflow-hidden bg-white">
-                  <div className="h-2 w-full bg-gray-200 group-hover:bg-primary transition-colors" />
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold font-display mb-4 text-foreground">{prod.title}</h3>
-                    <p className="text-muted-foreground mb-8 leading-relaxed">
+                  <div className="relative h-52 overflow-hidden">
+                    <img src={prod.img} alt={prod.imgAlt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold font-display mb-3 text-foreground">{prod.title}</h3>
+                    <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
                       {prod.desc}
                     </p>
                     <Link href={prod.link}>
-                      <span className="text-primary font-semibold flex items-center hover:text-primary/80 transition-colors cursor-pointer">
+                      <span className="text-primary font-semibold flex items-center hover:text-primary/80 transition-colors cursor-pointer text-sm">
                         View Details <ArrowRight className="ml-2 w-4 h-4" />
                       </span>
                     </Link>

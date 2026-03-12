@@ -8,7 +8,7 @@ export default function About() {
     <PageLayout>
       {/* Hero */}
       <div className="bg-foreground py-20 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80')] bg-cover bg-center mix-blend-luminosity"></div>
+        <div className="absolute inset-0 overflow-hidden"><img src={`${import.meta.env.BASE_URL}images/products/image13.jpeg`} alt="Graphene Composites facility" className="w-full h-full object-cover opacity-15 mix-blend-luminosity" /></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h1 className="text-4xl md:text-6xl font-bold text-white font-display mb-6">About Us</h1>
