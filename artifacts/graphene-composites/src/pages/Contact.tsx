@@ -9,8 +9,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { MapPin, Phone, Mail, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -35,14 +37,45 @@ export default function Contact() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // In a real app, this would be an API call
-    console.log(values);
-    toast({
-      title: "Message Sent Successfully",
-      description: "Our sales team will get back to you shortly.",
-    });
-    form.reset();
+  const [isSending, setIsSending] = useState(false);
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSending(true);
+    try {
+      // Configuration Note: Replace these IDs with your actual ones from EmailJS
+      // SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY
+
+      const result = await emailjs.send(
+        "service_t3oqveg",
+        "template_kq1a7tk", // Integrated your Template ID
+        {
+          from_name: values.name,
+          from_email: values.email,
+          company: values.company || "Not Provided",
+          phone: values.phone,
+          interest: values.interest,
+          message: values.message,
+        },
+        "nWFcmU5exua4vbnIy" // Integrated your Public Key
+      );
+
+      if (result.status === 200) {
+        toast({
+          title: "Message Sent Successfully",
+          description: "Our sales team will get back to you shortly.",
+        });
+        form.reset();
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast({
+        title: "Submission Error",
+        description: "There was a problem sending your message. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSending(false);
+    }
   }
 
   return (
@@ -224,9 +257,18 @@ export default function Contact() {
                         )}
                       />
 
-                      <Button type="submit" size="lg" className="w-full md:w-auto px-10 h-14 text-lg">
-                        <Send className="w-5 h-5 mr-2" />
-                        Send Message
+                      <Button type="submit" size="lg" className="w-full md:w-auto px-10 h-14 text-lg" disabled={isSending}>
+                        {isSending ? (
+                          <>
+                            <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-5 h-5 mr-2" />
+                            Send Message
+                          </>
+                        )}
                       </Button>
                     </form>
                   </Form>
