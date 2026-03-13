@@ -49,13 +49,13 @@ export default function Contact() {
     <PageLayout>
       <div className="py-20 lg:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader 
-            title="Get in Touch" 
+          <SectionHeader
+            title="Get in Touch"
             subtitle="Reach out to discuss your composite requirements, request a quote, or explore partnership opportunities."
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-16">
-            
+
             {/* Contact Info */}
             <div className="lg:col-span-1 space-y-8">
               <Card className="border-border shadow-md">
@@ -66,12 +66,17 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="font-bold text-foreground font-display text-lg mb-2">Headquarters & Plant</h4>
-                      <p className="text-muted-foreground leading-relaxed">
-                        Opp Baroda Dairy, Savli-Jarod Road,<br/>
-                        Savli - Vadodara Rd, Gothda,<br/>
-                        Vadodara, Gujarat 391770<br/>
+                      <a
+                        href="https://www.google.com/maps/place/Graphene+Composites+Llp/@22.5429318,73.2298033,13z/data=!4m6!3m5!1s0x395e33dd7c8bd5ff:0x7e7389a50c3dc2ff!8m2!3d22.5429318!4d73.2298033!16s%2Fg%2F11sbtxd9l2?entry=ttu&g_ep=EgoyMDI2MDMxMC4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground leading-relaxed hover:text-primary transition-colors block"
+                      >
+                        Opp Baroda Dairy, Savli-Jarod Road,<br />
+                        Savli - Vadodara Rd, Gothda,<br />
+                        Vadodara, Gujarat 391770<br />
                         India
-                      </p>
+                      </a>
                     </div>
                   </div>
 
@@ -115,7 +120,7 @@ export default function Contact() {
               <Card className="border-border shadow-xl h-full">
                 <CardContent className="p-8 md:p-10">
                   <h3 className="text-2xl font-bold font-display text-foreground mb-8">Send us a Message</h3>
-                  
+
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -208,10 +213,10 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel>Message / Requirements *</FormLabel>
                             <FormControl>
-                              <Textarea 
-                                placeholder="Please provide details about your requirements..." 
-                                className="min-h-[150px] bg-secondary resize-none" 
-                                {...field} 
+                              <Textarea
+                                placeholder="Please provide details about your requirements..."
+                                className="min-h-[150px] bg-secondary resize-none"
+                                {...field}
                               />
                             </FormControl>
                             <FormMessage />

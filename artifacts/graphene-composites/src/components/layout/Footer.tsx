@@ -7,15 +7,15 @@ export function Footer() {
     <footer className="bg-foreground text-white pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          
+
           {/* Brand Col */}
           <div className="space-y-6">
             <div className="bg-white inline-block p-3 rounded-xl shadow-lg">
               <img src="/graphene-logo.png" alt="Graphene Composites" className="h-10" />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              India's premier FRP manufacturer, delivering advanced composite solutions globally. 
-              <br/><br/>
+              India's premier FRP manufacturer, delivering advanced composite solutions globally.
+              <br /><br />
               <span className="text-primary font-medium italic">"You Define, We Deliver."</span>
             </p>
           </div>
@@ -72,7 +72,14 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start gap-3">
                 <MapPin className="text-primary shrink-0 mt-1" size={18} />
-                <span>Opp Baroda Dairy, Savli-Jarod Road,<br/>Gothda, Vadodara,<br/>Gujarat 391770, India</span>
+                <a
+                  href="https://www.google.com/maps/place/Graphene+Composites+Llp/@22.5429318,73.2298033,13z/data=!4m6!3m5!1s0x395e33dd7c8bd5ff:0x7e7389a50c3dc2ff!8m2!3d22.5429318!4d73.2298033!16s%2Fg%2F11sbtxd9l2?entry=ttu&g_ep=EgoyMDI2MDMxMC4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  Opp Baroda Dairy, Savli-Jarod Road,<br />Gothda, Vadodara,<br />Gujarat 391770, India
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="text-primary shrink-0" size={18} />

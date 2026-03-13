@@ -98,10 +98,15 @@ export default function Manufacturing() {
             A 400,000 sqft greenfield facility engineered for global-scale production
             with zero compromise on quality.
           </p>
-          <div className="flex items-center gap-2 text-gray-400 text-sm">
-            <MapPin className="w-4 h-4 text-primary" />
+          <a
+            href="https://www.google.com/maps/place/Graphene+Composites+Llp/@22.5429318,73.2298033,13z/data=!4m6!3m5!1s0x395e33dd7c8bd5ff:0x7e7389a50c3dc2ff!8m2!3d22.5429318!4d73.2298033!16s%2Fg%2F11sbtxd9l2?entry=ttu&g_ep=EgoyMDI2MDMxMC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-gray-400 text-sm hover:text-white transition-colors cursor-pointer group w-fit"
+          >
+            <MapPin className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
             <span>Opp. Baroda Dairy, Savli-Jarod Road, Gothda, Vadodara, Gujarat — 391770</span>
-          </div>
+          </a>
         </div>
       </div>
 
