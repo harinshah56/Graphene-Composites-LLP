@@ -42,9 +42,8 @@ function ImageGallery({ images }: { images: { src: string; alt: string }[] }) {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`flex-1 aspect-[4/3] rounded-lg overflow-hidden border-2 transition-all duration-200 ${
-                i === active ? "border-primary shadow-md" : "border-transparent opacity-60 hover:opacity-90"
-              }`}
+              className={`flex-1 aspect-[4/3] rounded-lg overflow-hidden border-2 transition-all duration-200 ${i === active ? "border-primary shadow-md" : "border-transparent opacity-60 hover:opacity-90"
+                }`}
             >
               <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
             </button>
@@ -74,7 +73,7 @@ export default function Products() {
             Engineered for Strength. Built for Endurance.
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
-            Three core product lines — Pultruded Profiles, Custom Moulded Parts, and FRP Grating — 
+            Three core product lines — Pultruded Profiles, Custom Moulded Parts, and FRP Grating —
             trusted by global industry leaders across America and Europe.
           </p>
         </div>
@@ -113,9 +112,9 @@ export default function Products() {
                 Pultruded Profiles
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                We operate <strong>20 state-of-the-art pultrusion lines</strong> running 24×7, producing 
-                a comprehensive range of structural shapes primarily used in cooling tower applications 
-                and many specialty applications. Our fabrication department is fully equipped to offer 
+                We operate <strong>20 state-of-the-art pultrusion lines</strong> running 24×7, producing
+                a comprehensive range of structural shapes primarily used in cooling tower applications
+                and many specialty applications. Our fabrication department is fully equipped to offer
                 all kinds of fabrication — you provide the drawings, we deliver the finished product.
               </p>
 
@@ -157,8 +156,8 @@ export default function Products() {
               <div className="p-5 bg-secondary rounded-xl border border-border mb-8">
                 <p className="text-sm font-semibold text-foreground mb-1">Primary Application</p>
                 <p className="text-muted-foreground text-sm">
-                  Cooling Tower structural components — our square pipes, angles, and channels are the 
-                  backbone of cooling tower fill frameworks deployed worldwide. Also used in construction, 
+                  Cooling Tower structural components — our square pipes, angles, and channels are the
+                  backbone of cooling tower fill frameworks deployed worldwide. Also used in construction,
                   electrical enclosures, marine, and specialty engineering applications.
                 </p>
               </div>
@@ -200,13 +199,13 @@ export default function Products() {
                 Custom Moulding
               </h2>
               <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
-                Many industries across the world regularly require FRP products with very specific designs, 
-                shapes, and dimensions. Our Custom Moulding department is focused primarily on the 
-                <strong> Wind Sector</strong>, with our prime product being the <strong>Nacelle Cover</strong> — 
+                Many industries across the world regularly require FRP products with very specific designs,
+                shapes, and dimensions. Our Custom Moulding department is focused primarily on the
+                <strong> Wind Sector</strong>, with our prime product being the <strong>Nacelle Cover</strong> —
                 the aerodynamic housing that protects the wind turbine gearbox and generator.
               </p>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                You have a design, concept, idea, or expectation — share it with us. Our engineering team 
+                You have a design, concept, idea, or expectation — share it with us. Our engineering team
                 takes it from concept to finished product. We offer complete end-to-end solutions.
               </p>
 
@@ -274,8 +273,8 @@ export default function Products() {
                 Molded FRP Grating
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Grating is one of the most common composite products — used across the world in almost all 
-                large-scale industries as platforms, structural parts, walkways, and weather-resistant covers. 
+                Grating is one of the most common composite products — used across the world in almost all
+                large-scale industries as platforms, structural parts, walkways, and weather-resistant covers.
                 We offer wide varieties of combinations tailored to your specific requirements.
               </p>
 
@@ -347,7 +346,7 @@ export default function Products() {
 
               {/* FRP vs Steel quick comparison */}
               <div className="mt-8 p-6 bg-foreground text-white rounded-2xl">
-                <h4 className="text-lg font-bold mb-4">Why FRP over Steel?</h4>
+                <h4 className="text-lg font-bold mb-4 text-white">Why FRP over Steel?</h4>
                 <div className="space-y-3">
                   {[
                     ["Weight", "60–80% lighter than steel"],
@@ -375,7 +374,7 @@ export default function Products() {
             Need a Custom FRP Solution?
           </h2>
           <p className="text-lg opacity-90 mb-8">
-            You define your requirement — we will engineer, manufacture, and deliver the exact product. 
+            You define your requirement — we will engineer, manufacture, and deliver the exact product.
             Contact our team for technical specifications, samples, or a quote.
           </p>
           <Link href="/contact">

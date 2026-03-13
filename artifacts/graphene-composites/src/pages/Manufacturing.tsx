@@ -90,12 +90,12 @@ export default function Manufacturing() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <p className="text-primary font-semibold uppercase tracking-widest text-sm mb-3">Manufacturing & Infrastructure</p>
-          <h1 className="text-4xl md:text-6xl font-bold font-display mb-6 max-w-3xl leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold font-display mb-6 max-w-3xl leading-tight text-white">
             State-of-the-Art Facility in India's Composites Hub
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl leading-relaxed mb-8">
-            Located in Savli, Vadodara — the composites manufacturing heartland of India. 
-            A 400,000 sqft greenfield facility engineered for global-scale production 
+            Located in Savli, Vadodara — the composites manufacturing heartland of India.
+            A 400,000 sqft greenfield facility engineered for global-scale production
             with zero compromise on quality.
           </p>
           <div className="flex items-center gap-2 text-gray-400 text-sm">
@@ -144,9 +144,8 @@ export default function Manufacturing() {
             {FACILITY_IMAGES.map((img, i) => (
               <div
                 key={i}
-                className={`relative group overflow-hidden rounded-2xl bg-foreground shadow-lg ${
-                  i === 0 ? "md:col-span-2 lg:col-span-2 aspect-[16/9]" : "aspect-[4/3]"
-                }`}
+                className={`relative group overflow-hidden rounded-2xl bg-foreground shadow-lg ${i === 0 ? "md:col-span-2 lg:col-span-2 aspect-[16/9]" : "aspect-[4/3]"
+                  }`}
               >
                 <img
                   src={img.src}
@@ -168,9 +167,9 @@ export default function Manufacturing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="text-primary font-semibold uppercase tracking-widest text-sm mb-3">Plant Layout</p>
-            <h2 className="text-3xl font-bold font-display">Dedicated Production Departments</h2>
+            <h2 className="text-3xl font-bold font-display text-white">Dedicated Production Departments</h2>
             <p className="text-gray-400 mt-3 max-w-xl mx-auto text-sm">
-              Each department is purpose-built for its function — ensuring focused expertise and 
+              Each department is purpose-built for its function — ensuring focused expertise and
               efficient material flow across the facility.
             </p>
           </div>
@@ -196,7 +195,7 @@ export default function Manufacturing() {
               Built for Zero-Defect, Global-Scale Manufacturing
             </h2>
             <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-              Every infrastructure decision at our facility is engineered around the 
+              Every infrastructure decision at our facility is engineered around the
               "You Define, We Deliver" promise to our global customers.
             </p>
           </div>
@@ -228,13 +227,13 @@ export default function Manufacturing() {
                 Automated Control Systems — Unique in the Industry
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                We have deployed a proprietary <strong>Automated Control System</strong> — a capability 
-                unique in the Indian composites industry. This system ensures that scientifically 
+                We have deployed a proprietary <strong>Automated Control System</strong> — a capability
+                unique in the Indian composites industry. This system ensures that scientifically
                 calculated parameters are maintained during production with zero human error.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Combined with our skilled workforce of 150+ professionals, this technology gives 
-                our global customers the assurance that every batch meets the exact specifications 
+                Combined with our skilled workforce of 150+ professionals, this technology gives
+                our global customers the assurance that every batch meets the exact specifications
                 agreed upon — consistently, across every order.
               </p>
             </div>
