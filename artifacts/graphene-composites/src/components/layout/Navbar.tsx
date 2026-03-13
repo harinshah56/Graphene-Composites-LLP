@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  { label: "About us", href: "/about" },
   { label: "Products", href: "/products" },
   { label: "Manufacturing", href: "/manufacturing" },
   { label: "Technology", href: "/technology" },
@@ -35,16 +35,15 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-3" : "bg-white py-5"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-3" : "bg-white py-5"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 z-50 relative">
-          <img 
-            src="/graphene-logo.png" 
-            alt="Graphene Composites Logo" 
+          <img
+            src="/graphene-logo.png"
+            alt="Graphene Composites Logo"
             className={`transition-all duration-300 ${isScrolled ? "h-10" : "h-12"}`}
             onError={(e) => {
               // Fallback if image fails to load
@@ -53,7 +52,7 @@ export function Navbar() {
             }}
           />
           <div className="hidden font-display font-bold text-xl leading-tight">
-            <span className="text-primary">Graphene</span><br/>
+            <span className="text-primary">Graphene</span><br />
             <span className="text-foreground">Composites</span>
           </div>
         </Link>
@@ -63,9 +62,8 @@ export function Navbar() {
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href}>
               <span
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors hover:text-primary cursor-pointer ${
-                  location === link.href ? "text-primary bg-primary/5" : "text-foreground/80"
-                }`}
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors hover:text-primary cursor-pointer ${location === link.href ? "text-primary bg-primary/5" : "text-foreground/80"
+                  }`}
               >
                 {link.label}
               </span>
@@ -103,9 +101,8 @@ export function Navbar() {
               {NAV_LINKS.map((link) => (
                 <Link key={link.href} href={link.href}>
                   <span
-                    className={`block py-3 text-lg font-medium border-b border-border/50 ${
-                      location === link.href ? "text-primary" : "text-foreground"
-                    }`}
+                    className={`block py-3 text-lg font-medium border-b border-border/50 ${location === link.href ? "text-primary" : "text-foreground"
+                      }`}
                   >
                     {link.label}
                   </span>
