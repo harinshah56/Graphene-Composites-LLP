@@ -3,19 +3,38 @@ import { CheckCircle2, ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-100px" },
+  transition: { duration: 0.6 }
+};
+
+const staggerContainer = {
+  initial: { opacity: 0 },
+  whileInView: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08
+    }
+  },
+  viewport: { once: true, margin: "-100px" }
+};
 
 const BASE = import.meta.env.BASE_URL;
 
 const PULTRUSION_IMAGES = [
-  { src: `${BASE}images/products/image10.jpeg`, alt: "Pultruded square tubes stacked in facility" },
-  { src: `${BASE}images/products/image12.jpeg`, alt: "Pultruded profiles at Graphene Composites facility" },
-  { src: `${BASE}images/products/image9.jpeg`, alt: "Close-up of pultruded FRP profile" },
-  { src: `${BASE}images/products/image11.jpeg`, alt: "Pultruded profiles in manufacturing facility" },
+  { src: `${BASE}images/products/pultrusion_1.png`, alt: "Pultruded white channels stacked ready for dispatch" },
+  { src: `${BASE}images/products/pultrusion_3.png`, alt: "High-precision pultruded white square tubes" },
+  { src: `${BASE}images/products/pultrusion_2.png`, alt: "Pultruded black angles and square profiles" },
+  { src: `${BASE}images/products/pultrusion_4.png`, alt: "Close-up of pultruded FRP profiles batch" },
 ];
 
 const MOULDING_IMAGES = [
-  { src: `${BASE}images/products/image6.jpeg`, alt: "Wind turbine nacelle covers ready for dispatch" },
-  { src: `${BASE}images/products/image7.jpeg`, alt: "FRP nacelle cover top view" },
+  { src: `${BASE}images/products/moulding_1.png`, alt: "Wind turbine nacelle covers — custom moulding" },
+  { src: `${BASE}images/products/moulding_2.png`, alt: "FRP nacelle cover component detail" },
   { src: `${BASE}images/products/image8.jpeg`, alt: "Fiberglass reinforcement lay-up process" },
 ];
 
@@ -30,11 +49,18 @@ function ImageGallery({ images }: { images: { src: string; alt: string }[] }) {
   return (
     <div className="space-y-3">
       <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-secondary border border-border shadow-lg">
-        <img
-          src={images[active].src}
-          alt={images[active].alt}
-          className="w-full h-full object-cover transition-all duration-500"
-        />
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={active}
+            src={images[active].src}
+            alt={images[active].alt}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="w-full h-full object-cover"
+          />
+        </AnimatePresence>
       </div>
       {images.length > 1 && (
         <div className="flex gap-2">
@@ -68,14 +94,20 @@ export default function Products() {
           <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/90 to-foreground/60" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <p className="text-primary font-semibold uppercase tracking-widest text-sm mb-3">Our Products</p>
-          <h1 className="text-4xl md:text-6xl font-bold font-display mb-6 max-w-3xl text-white">
-            Engineered for Strength. Built for Endurance.
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
-            Three core product lines — Pultruded Profiles, Custom Moulded Parts, and FRP Grating —
-            trusted by global industry leaders across America and Europe.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="text-primary font-semibold uppercase tracking-widest text-sm mb-3">Our Products</p>
+            <h1 className="text-4xl md:text-6xl font-bold font-display mb-6 max-w-3xl text-white">
+              Engineered for Strength. Built for Endurance.
+            </h1>
+            <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">
+              Three core product lines — Pultruded Profiles, Custom Moulded Parts, and FRP Grating —
+              trusted by global industry leaders across America and Europe.
+            </p>
+          </motion.div>
         </div>
       </div>
 
@@ -104,7 +136,12 @@ export default function Products() {
       <section id="pultrusion" className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
+            <motion.div
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+            >
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-sm uppercase tracking-wider mb-6">
                 Product Line 01
               </span>
@@ -119,7 +156,10 @@ export default function Products() {
               </p>
 
               <h3 className="text-base font-semibold text-foreground uppercase tracking-wider mb-4">Available Profiles</h3>
-              <div className="grid grid-cols-2 gap-x-6 gap-y-3 mb-8">
+              <motion.div
+                className="grid grid-cols-2 gap-x-6 gap-y-3 mb-8"
+                variants={staggerContainer}
+              >
                 {[
                   "Angles (All Sizes)",
                   "C-Channels",
@@ -130,15 +170,18 @@ export default function Products() {
                   "Square Pipes",
                   "Custom Profiles",
                 ].map((profile) => (
-                  <div key={profile} className="flex items-center gap-2 text-foreground">
+                  <motion.div key={profile} className="flex items-center gap-2 text-foreground" variants={fadeInUp}>
                     <ChevronRight className="w-4 h-4 text-primary flex-shrink-0" />
                     <span className="font-medium">{profile}</span>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
               <h3 className="text-base font-semibold text-foreground uppercase tracking-wider mb-4">Key Advantages</h3>
-              <ul className="space-y-3 mb-10">
+              <motion.ul
+                className="space-y-3 mb-10"
+                variants={staggerContainer}
+              >
                 {[
                   "24×7 production with 20 dedicated pultrusion lines",
                   "3-stage quality inspection on every single piece",
@@ -146,12 +189,12 @@ export default function Products() {
                   "Tailor-made packing for safe international transit",
                   "Custom shapes available from customer drawings",
                 ].map((point, i) => (
-                  <li key={i} className="flex items-start gap-3">
+                  <motion.li key={i} className="flex items-start gap-3" variants={fadeInUp}>
                     <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-foreground leading-relaxed">{point}</span>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
 
               <div className="p-5 bg-secondary rounded-xl border border-border mb-8">
                 <p className="text-sm font-semibold text-foreground mb-1">Primary Application</p>
@@ -167,14 +210,20 @@ export default function Products() {
                   Request Profile Specifications <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
-            </div>
+            </motion.div>
 
-            <div className="lg:sticky lg:top-32">
+            <motion.div
+              className="lg:sticky lg:top-32"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <ImageGallery images={PULTRUSION_IMAGES} />
               <p className="text-xs text-muted-foreground text-center mt-3 italic">
                 Actual products from our Savli, Vadodara facility
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -184,14 +233,26 @@ export default function Products() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-            <div className="lg:sticky lg:top-32 lg:order-1 order-2">
+            <motion.div
+              className="lg:sticky lg:top-32 lg:order-1 order-2"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <ImageGallery images={MOULDING_IMAGES} />
               <p className="text-xs text-muted-foreground text-center mt-3 italic">
                 Wind turbine nacelle covers manufactured at our facility
               </p>
-            </div>
+            </motion.div>
 
-            <div className="lg:order-2 order-1">
+            <motion.div
+              className="lg:order-2 order-1"
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+            >
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-sm uppercase tracking-wider mb-6">
                 Product Line 02
               </span>
@@ -210,7 +271,10 @@ export default function Products() {
               </p>
 
               <h3 className="text-base font-semibold text-foreground uppercase tracking-wider mb-4">Manufacturing Processes</h3>
-              <div className="grid grid-cols-1 gap-4 mb-8">
+              <motion.div
+                className="grid grid-cols-1 gap-4 mb-8"
+                variants={staggerContainer}
+              >
                 {[
                   {
                     process: "Resin Infusion",
@@ -225,18 +289,21 @@ export default function Products() {
                     desc: "Vacuum consolidation ensures void-free, high-density laminates for critical structural components."
                   },
                 ].map((item) => (
-                  <div key={item.process} className="flex gap-4 p-4 bg-background rounded-xl border border-border">
+                  <motion.div key={item.process} className="flex gap-4 p-4 bg-background rounded-xl border border-border" variants={fadeInUp}>
                     <div className="w-2 bg-primary rounded-full flex-shrink-0" />
                     <div>
                       <p className="font-bold text-foreground">{item.process}</p>
                       <p className="text-muted-foreground text-sm mt-1">{item.desc}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
               <h3 className="text-base font-semibold text-foreground uppercase tracking-wider mb-4">End-to-End Service</h3>
-              <ul className="space-y-3 mb-10">
+              <motion.ul
+                className="space-y-3 mb-10"
+                variants={staggerContainer}
+              >
                 {[
                   "Product design and engineering from concept/drawings",
                   "Custom tooling and mold fabrication in-house",
@@ -244,19 +311,19 @@ export default function Products() {
                   "Tailor-made packing for large-format international shipping",
                   "Fastest-growing nacelle cover supplier in the Indian wind sector",
                 ].map((point, i) => (
-                  <li key={i} className="flex items-start gap-3">
+                  <motion.li key={i} className="flex items-start gap-3" variants={fadeInUp}>
                     <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-foreground leading-relaxed">{point}</span>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
 
               <Link href="/contact">
                 <Button size="lg" className="h-12 px-8">
                   Discuss Your Requirement <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -265,7 +332,12 @@ export default function Products() {
       <section id="grating" className="py-24 bg-background border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
+            <motion.div
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+            >
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-sm uppercase tracking-wider mb-6">
                 Product Line 03
               </span>
@@ -279,73 +351,90 @@ export default function Products() {
               </p>
 
               {/* Specifications Grid */}
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="p-5 bg-secondary rounded-xl border border-border">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Mesh Sizes</p>
-                  <p className="font-bold text-foreground">38 × 38 mm</p>
-                  <p className="text-sm text-muted-foreground mt-1">Heights: 25mm & 38mm</p>
-                </div>
-                <div className="p-5 bg-secondary rounded-xl border border-border">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Full Panel Size</p>
-                  <p className="font-bold text-foreground">1220 × 3660 mm</p>
-                  <p className="text-sm text-muted-foreground mt-1">Custom sizes available</p>
-                </div>
-                <div className="p-5 bg-secondary rounded-xl border border-border">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Resin Options</p>
-                  <p className="font-bold text-foreground">Polyester</p>
-                  <p className="text-sm text-muted-foreground mt-1">+ Vinyl Ester available</p>
-                </div>
-                <div className="p-5 bg-secondary rounded-xl border border-border">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Colors</p>
-                  <p className="font-bold text-foreground">Full Spectrum</p>
-                  <p className="text-sm text-muted-foreground mt-1">Custom color matching</p>
-                </div>
-              </div>
+              <motion.div
+                className="grid grid-cols-2 gap-4 mb-8"
+                variants={staggerContainer}
+              >
+                {[
+                  { label: "Mesh Sizes", value: "38 × 38 mm", sub: "Heights: 25mm & 38mm" },
+                  { label: "Full Panel Size", value: "1220 × 3660 mm", sub: "Custom sizes available" },
+                  { label: "Resin Options", value: "Polyester", sub: "+ Vinyl Ester available" },
+                  { label: "Colors", value: "Full Spectrum", sub: "Custom color matching" },
+                ].map((spec) => (
+                  <motion.div key={spec.label} className="p-5 bg-secondary rounded-xl border border-border" variants={fadeInUp}>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">{spec.label}</p>
+                    <p className="font-bold text-foreground">{spec.value}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{spec.sub}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
 
               <h3 className="text-base font-semibold text-foreground uppercase tracking-wider mb-4">Surface Finish Options</h3>
-              <div className="grid grid-cols-2 gap-3 mb-8">
+              <motion.div
+                className="grid grid-cols-2 gap-3 mb-8"
+                variants={staggerContainer}
+              >
                 {[
                   { name: "Meniscus", desc: "Concave surface, standard grip" },
                   { name: "Gritted", desc: "Anti-slip, high friction surface" },
                   { name: "Flat", desc: "Smooth flat surface finish" },
                   { name: "Chequered Plate", desc: "Patterned anti-slip surface" },
                 ].map((s) => (
-                  <div key={s.name} className="p-4 border border-border rounded-xl bg-secondary">
+                  <motion.div key={s.name} className="p-4 border border-border rounded-xl bg-secondary" variants={fadeInUp}>
                     <p className="font-semibold text-foreground text-sm">{s.name}</p>
                     <p className="text-xs text-muted-foreground mt-1">{s.desc}</p>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
               <h3 className="text-base font-semibold text-foreground uppercase tracking-wider mb-4">Applications</h3>
-              <div className="flex flex-wrap gap-2 mb-10">
+              <motion.div
+                className="flex flex-wrap gap-2 mb-10"
+                variants={staggerContainer}
+              >
                 {[
                   "Cooling Towers", "Chemical/Oil & Gas Plants", "Water & Wastewater",
                   "Pharmaceuticals", "Pulp & Paper", "Solar Plants", "Telecommunication",
                   "Food & Beverages", "Power & Utilities", "Offshore Projects",
                   "Recreational Areas", "Architectural Decking", "Transportation",
                 ].map((app) => (
-                  <span key={app} className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20">
+                  <motion.span
+                    key={app}
+                    className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20"
+                    variants={fadeInUp}
+                  >
                     {app}
-                  </span>
+                  </motion.span>
                 ))}
-              </div>
+              </motion.div>
 
               <Link href="/contact">
                 <Button size="lg" className="h-12 px-8">
                   Request Grating Specifications <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
-            </div>
+            </motion.div>
 
-            <div className="lg:sticky lg:top-32">
+            <motion.div
+              className="lg:sticky lg:top-32"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <ImageGallery images={GRATING_IMAGES} />
               <p className="text-xs text-muted-foreground text-center mt-3 italic">
                 FRP Grating in industrial & solar applications
               </p>
 
               {/* FRP vs Steel quick comparison */}
-              <div className="mt-8 p-6 bg-foreground text-white rounded-2xl">
+              <motion.div
+                className="mt-8 p-6 bg-foreground text-white rounded-2xl shadow-xl"
+                variants={fadeInUp}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true }}
+              >
                 <h4 className="text-lg font-bold mb-4 text-white">Why FRP over Steel?</h4>
                 <div className="space-y-3">
                   {[
@@ -361,8 +450,8 @@ export default function Products() {
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>

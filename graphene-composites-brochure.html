@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graphene Composites LLP — Company Brochure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* ─── DESIGN TOKENS (matching index.css) ─── */
+        :root {
+            --primary: hsl(127, 51%, 44%);
+            --primary-dark: hsl(127, 51%, 34%);
+            --primary-light: hsl(127, 51%, 95%);
+            --foreground: hsl(225, 28%, 14%);
+            /* #1b1f30 charcoal navy */
+            --background: #ffffff;
+            --secondary: hsl(210, 17%, 96%);
+            /* light gray */
+            --muted: hsl(215, 16%, 47%);
+            --border: hsl(214, 32%, 91%);
+            --font-sans: 'Inter', sans-serif;
+            --font-display: 'Montserrat', sans-serif;
+        }
+
+        /* ─── RESET & BASE ─── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 10pt;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--foreground);
+            background: var(--background);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* ─── PRINT SETTINGS ─── */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            .page-break {
+                page-break-before: always;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* ─── LAYOUT HELPERS ─── */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: 170mm;
+            margin: 0 auto;
+            padding: 0 8mm;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6mm;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5mm;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 4mm;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .gap-3 {
+            gap: 3mm;
+        }
+
+        .gap-4 {
+            gap: 4mm;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* ─── TYPOGRAPHY ─── */
+        .label {
+            font-family: var(--font-display);
+            font-size: 7pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--primary);
+        }
+
+        .text-muted {
+            color: var(--muted);
+            font-size: 9pt;
+        }
+
+        .text-white {
+            color: #ffffff;
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        /* ─── BADGES / CHIPS ─── */
+        .badge {
+            display: inline-block;
+            padding: 1.5mm 3.5mm;
+            border-radius: 99px;
+            font-size: 7.5pt;
+            font-weight: 600;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border: 1px solid hsl(127, 51%, 80%);
+        }
+
+        .badge-dark {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* ─── CHECK ITEM ─── */
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 2.5mm;
+            padding: 2mm 0;
+        }
+
+        .check-icon {
+            width: 4mm;
+            height: 4mm;
+            border-radius: 50%;
+            background: var(--primary);
+            flex-shrink: 0;
+            margin-top: 1mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .check-icon::after {
+            content: '✓';
+            color: #fff;
+            font-size: 6pt;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .check-item span {
+            font-size: 9pt;
+            line-height: 1.5;
+        }
+
+        /* ─── CARDS ─── */
+        .card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 4mm;
+            padding: 5mm 6mm;
+        }
+
+        .card-dark {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 4mm;
+            padding: 5mm 6mm;
+        }
+
+        .card-secondary {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 4mm;
+            padding: 5mm 6mm;
+        }
+
+        .card-accent {
+            background: var(--primary-light);
+            border: 1px solid hsl(127, 51%, 82%);
+            border-radius: 4mm;
+            padding: 5mm 6mm;
+        }
+
+        /* ─── SECTIONS ─── */
+        .section {
+            padding: 10mm 0;
+        }
+
+        .section-dark {
+            background: var(--foreground);
+            color: #fff;
+            padding: 10mm 0;
+        }
+
+        .section-primary {
+            background: var(--primary);
+            color: #fff;
+            padding: 10mm 0;
+        }
+
+        .section-secondary {
+            background: var(--secondary);
+            padding: 10mm 0;
+        }
+
+        .section-title {
+            font-size: 16pt;
+            margin-bottom: 2mm;
+            color: var(--foreground);
+        }
+
+        .section-title-light {
+            font-size: 16pt;
+            margin-bottom: 2mm;
+            color: #fff;
+        }
+
+        .section-subtitle {
+            font-size: 9.5pt;
+            color: var(--muted);
+            margin-bottom: 6mm;
+            max-width: 120mm;
+        }
+
+        .section-subtitle-light {
+            font-size: 9.5pt;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 6mm;
+        }
+
+        /* ─── DIVIDER ─── */
+        .divider {
+            width: 10mm;
+            height: 0.8mm;
+            background: var(--primary);
+            border-radius: 2px;
+            margin: 2.5mm 0 5mm;
+        }
+
+        .divider-center {
+            margin: 2.5mm auto 5mm;
+        }
+
+        /* ─── STAT BOX ─── */
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-box .value {
+            font-family: var(--font-display);
+            font-size: 20pt;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .stat-box .stat-label {
+            font-size: 7pt;
+            color: rgba(255, 255, 255, 0.75);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 1mm;
+            font-weight: 600;
+        }
+
+        /* ─── TABLE ─── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 2.5mm 4mm;
+            font-size: 8.5pt;
+        }
+
+        td {
+            padding: 2.5mm 4mm;
+            font-size: 8.5pt;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tg-prop {
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 500;
+        }
+
+        .tg-yes {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .tg-no {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .tg-head-main {
+            font-family: var(--font-display);
+            font-size: 12pt;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .tg-head-alt {
+            font-family: var(--font-display);
+            font-size: 10pt;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+        }
+
+        /* ─── PROCESS STEP ─── */
+        .process-step {
+            display: flex;
+            gap: 3mm;
+            margin-bottom: 4mm;
+        }
+
+        .process-bar {
+            width: 1.2mm;
+            background: var(--primary);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .process-content h4 {
+            font-size: 10pt;
+            color: var(--foreground);
+            margin-bottom: 1mm;
+        }
+
+        .process-content p {
+            font-size: 8.5pt;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* ─── SPEC TAG ─── */
+        .spec-tag {
+            display: inline-block;
+            padding: 1mm 3mm;
+            border-radius: 99px;
+            font-size: 7.5pt;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border: 1px solid hsl(127, 51%, 80%);
+            margin: 1mm;
+            font-weight: 500;
+        }
+
+        /* ─── CONTACT INFO ─── */
+        .contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 3mm;
+            margin-bottom: 4mm;
+        }
+
+        .contact-icon {
+            width: 7mm;
+            height: 7mm;
+            border-radius: 50%;
+            background: var(--primary-light);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9pt;
+        }
+
+        .contact-label {
+            font-size: 7.5pt;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-size: 9pt;
+            color: var(--foreground);
+            font-weight: 500;
+            margin-top: 0.5mm;
+        }
+
+        /* ─── FOOTER ─── */
+        .footer-bar {
+            background: var(--foreground);
+            padding: 4mm 8mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bar span {
+            font-size: 7.5pt;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-bar .brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 9pt;
+            color: #fff;
+        }
+
+        .footer-bar .page-num {
+            font-size: 7pt;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ─── PAGE HEADER (logo bar) ─── */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3mm 8mm 3mm 8mm;
+            border-bottom: 1px solid var(--border);
+            background: #fff;
+        }
+
+        .page-header-dark {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3mm 8mm 3mm 8mm;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            background: var(--foreground);
+        }
+
+        .page-header img {
+            height: 8mm;
+            width: auto;
+        }
+
+        /* ─── PRINT BUTTON ─── */
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-family: var(--font-display);
+            font-size: 11pt;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn no-print" onclick="window.print()">🖨 Download / Print PDF</button>
+
+    <!-- ═══════════════════════════════════════════════════
+     PAGE 1 — COVER
+═══════════════════════════════════════════════════ -->
+    <div class="page"
+        style="background: var(--foreground); display:flex; flex-direction:column; justify-content:space-between; min-height:297mm;">
+
+        <!-- Logo header -->
+        <div class="page-header-dark">
+            <span
+                style="font-size:7.5pt; color:rgba(255,255,255,0.45); font-family:var(--font-display); letter-spacing:0.05em;">Company
+                Brochure · Confidential</span>
+            <img src="artifacts/graphene-composites/public/graphene-logo.png" alt="Graphene Composites LLP" />
+        </div>
+
+        <!-- Top stripe -->
+        <div style="background:var(--primary); height:1.5mm; width:100%;"></div>
+
+        <!-- Main cover content -->
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 18mm 16mm;">
+
+            <!-- Eyebrow -->
+            <div style="margin-bottom:6mm;">
+                <span class="badge" style="font-size:8pt; letter-spacing:0.12em;">ISO 9001:2015 Certified &nbsp;·&nbsp;
+                    Est. 2017</span>
+            </div>
+
+            <!-- Company name -->
+            <h1 style="font-size:32pt; color:#fff; line-height:1.1; margin-bottom:4mm; font-weight:800;">
+                Graphene<br />Composites <span style="color:var(--primary);">LLP</span>
+            </h1>
+            <div class="divider" style="width:18mm; height:1mm; margin-bottom:6mm;"></div>
+
+            <!-- Tagline -->
+            <p
+                style="font-size:12pt; color:rgba(255,255,255,0.85); margin-bottom:3mm; font-style:italic; font-family:var(--font-display);">
+                "You Define, We Deliver."
+            </p>
+            <p style="font-size:11pt; color:rgba(255,255,255,0.65); max-width:110mm; line-height:1.7;">
+                India's premier Fiber Reinforced Plastics (FRP) manufacturer. Supplying precision-engineered Pultrusion,
+                Custom Moulding, and Grating solutions globally since 2017.
+            </p>
+
+            <!-- Stat bar -->
+            <div style="margin-top:12mm; display:grid; grid-template-columns:repeat(4,1fr); gap:5mm;">
+                <div class="stat-box">
+                    <div class="value">400K</div>
+                    <div class="stat-label">Sqft Facility</div>
+                </div>
+                <div class="stat-box">
+                    <div class="value">20+</div>
+                    <div class="stat-label">Pultrusion Lines</div>
+                </div>
+                <div class="stat-box">
+                    <div class="value">95%</div>
+                    <div class="stat-label">Global Export</div>
+                </div>
+                <div class="stat-box">
+                    <div class="value">150+</div>
+                    <div class="stat-label">Professionals</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cover footer -->
+        <div
+            style="padding: 6mm 16mm; border-top: 1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <p style="font-size:8pt; color:rgba(255,255,255,0.5);">Savli, Vadodara, Gujarat — India</p>
+                <p style="font-size:8pt; color:rgba(255,255,255,0.5);">graphenecomposites.in</p>
+            </div>
+            <div style="text-align:right;">
+                <p style="font-size:8pt; color:rgba(255,255,255,0.5);">sanjay@graphenecomposites.in</p>
+                <p style="font-size:8pt; color:rgba(255,255,255,0.5);">+91 96626 77211</p>
+            </div>
+        </div>
+
+        <!-- Bottom stripe -->
+        <div style="background:var(--primary); height:2mm; width:100%;"></div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════
+     PAGE 2 — ABOUT & OVERVIEW
+═══════════════════════════════════════════════════ -->
+    <div class="page page-break">
+        <div style="background:var(--primary); height:1mm; width:100%;"></div>
+
+        <!-- Logo header -->
+        <div class="page-header">
+            <span
+                style="font-size:7.5pt; color:var(--muted); font-family:var(--font-display); letter-spacing:0.05em;">Company
+                Brochure · Confidential</span>
+            <img src="artifacts/graphene-composites/public/graphene-logo.png" alt="Graphene Composites LLP" />
+        </div>
+
+        <div class="section container" style="padding-top:6mm;">
+            <p class="label">About Us</p>
+            <h2 class="section-title" style="font-size:18pt; margin-bottom:1mm;">Engineering the Future of Materials
+            </h2>
+            <div class="divider"></div>
+
+            <div class="grid-2" style="gap:8mm; margin-top:4mm;">
+                <div>
+                    <h3 style="font-size:12pt; margin-bottom:3mm; color:var(--foreground);">Our Story</h3>
+                    <p class="text-muted" style="margin-bottom:3mm; line-height:1.7;">
+                        Established in <strong style="color:var(--foreground);">2017</strong>, Graphene Composites LLP
+                        was founded with a singular vision: to become the most reliable and technologically advanced
+                        manufacturer of Fiber Reinforced Plastics (FRP) in the region.
+                    </p>
+                    <p class="text-muted" style="margin-bottom:3mm; line-height:1.7;">
+                        Located in <strong style="color:var(--foreground);">Savli, Vadodara</strong>—widely recognised
+                        as the Composites Hub of India—we benefit from a rich ecosystem of raw material suppliers and
+                        skilled manpower, with major seaports just 150 km away.
+                    </p>
+                    <p class="text-muted" style="line-height:1.7;">
+                        Today, we export <strong style="color:var(--primary);">95% of our production</strong> to the
+                        demanding markets of the USA and Europe, a testament to our unwavering commitment to quality and
+                        international standards.
+                    </p>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:4mm;">
+                    <div class="card-secondary" style="padding:4mm 5mm;">
+                        <p class="label" style="margin-bottom:1mm;">Founded</p>
+                        <p
+                            style="font-size:18pt; font-family:var(--font-display); font-weight:800; color:var(--foreground);">
+                            2017</p>
+                    </div>
+                    <div class="card-secondary" style="padding:4mm 5mm;">
+                        <p class="label" style="margin-bottom:1mm;">Facility Size</p>
+                        <p
+                            style="font-size:15pt; font-family:var(--font-display); font-weight:800; color:var(--foreground);">
+                            400,000 sqft</p>
+                    </div>
+                    <div class="card-secondary" style="padding:4mm 5mm;">
+                        <p class="label" style="margin-bottom:1mm;">Quality Standard</p>
+                        <p
+                            style="font-size:14pt; font-family:var(--font-display); font-weight:800; color:var(--foreground);">
+                            ISO 9001:2015</p>
+                    </div>
+                    <div class="card-secondary" style="padding:4mm 5mm;">
+                        <p class="label" style="margin-bottom:1mm;">Export Quality</p>
+                        <p
+                            style="font-size:14pt; font-family:var(--font-display); font-weight:800; color:var(--foreground);">
+                            100%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vision & Mission -->
+        <div class="section-dark" style="margin-top:6mm; padding: 8mm 0;">
+            <div class="container grid-2" style="gap:6mm;">
+                <div class="card-dark">
+                    <p class="label" style="color:var(--primary); margin-bottom:2mm;">Our Vision</p>
+                    <p style="font-size:9pt; color:rgba(255,255,255,0.8); line-height:1.65;">
+                        To be the globally preferred partner for advanced composite solutions, driving innovation and
+                        replacing traditional materials to build a more durable and sustainable world.
+                    </p>
+                </div>
+                <div class="card-dark">
+                    <p class="label" style="color:var(--primary); margin-bottom:2mm;">Our Mission</p>
+                    <p style="font-size:9pt; color:rgba(255,255,255,0.8); line-height:1.65;">
+                        To consistently deliver precision-engineered FRP products by leveraging automated technology,
+                        stringent quality controls, and a dedicated team — living up to our motto: <em
+                            style="color:#fff; font-weight:600;">"You Define, We Deliver."</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key differentiators -->
+        <div class="section container" style="padding-top:7mm; padding-bottom:6mm;">
+            <p class="label" style="margin-bottom:2mm;">Why Choose Us</p>
+            <h3 style="font-size:13pt; margin-bottom:4mm;">Our Core Strengths</h3>
+            <div class="grid-3" style="gap:4mm;">
+                <div class="card-accent">
+                    <p
+                        style="font-size:9.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1.5mm;">
+                        3-Stage Quality Inspection</p>
+                    <p style="font-size:8pt; color:var(--muted); line-height:1.5;">100% piece inspection — not batch
+                        sampling. Every product scientifically verified before dispatch.</p>
+                </div>
+                <div class="card-accent">
+                    <p
+                        style="font-size:9.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1.5mm;">
+                        Automated Control Systems</p>
+                    <p style="font-size:8pt; color:var(--muted); line-height:1.5;">Proprietary PLC automation ensures
+                        scientifically calculated parameters — unique in Indian composites.</p>
+                </div>
+                <div class="card-accent">
+                    <p
+                        style="font-size:9.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1.5mm;">
+                        In-house Fabrication</p>
+                    <p style="font-size:8pt; color:var(--muted); line-height:1.5;">Full fabrication department —
+                        cutting, drilling, assembly and custom tooling all under one roof.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bar">
+            <span class="brand">Graphene Composites LLP</span>
+            <span>You Define, We Deliver</span>
+            <span class="page-num">Page 2</span>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════
+     PAGE 3 — PRODUCTS: PULTRUSION + MOULDING
+═══════════════════════════════════════════════════ -->
+    <div class="page page-break">
+        <div style="background:var(--primary); height:1mm; width:100%;"></div>
+
+        <!-- Logo header -->
+        <div class="page-header">
+            <span
+                style="font-size:7.5pt; color:var(--muted); font-family:var(--font-display); letter-spacing:0.05em;">Company
+                Brochure · Confidential</span>
+            <img src="artifacts/graphene-composites/public/graphene-logo.png" alt="Graphene Composites LLP" />
+        </div>
+
+        <div class="section container" style="padding-top:6mm; padding-bottom:5mm;">
+            <p class="label">Our Products</p>
+            <h2 class="section-title" style="font-size:17pt;">Engineered for Strength. Built for Endurance.</h2>
+            <div class="divider"></div>
+            <p class="section-subtitle">Three core product lines trusted by global industry leaders across America and
+                Europe.</p>
+        </div>
+
+        <!-- Product Line 01: Pultrusion -->
+        <div style="background:var(--secondary); padding:7mm 0;">
+            <div class="container">
+                <div class="grid-2" style="gap:7mm; align-items:start;">
+                    <div>
+                        <span class="badge" style="margin-bottom:3mm; display:inline-block;">Product Line 01</span>
+                        <h3 style="font-size:14pt; color:var(--foreground); margin-bottom:2mm;">Pultruded Profiles</h3>
+                        <p style="font-size:8.5pt; color:var(--muted); margin-bottom:4mm; line-height:1.65;">
+                            We operate <strong style="color:var(--foreground);">20 state-of-the-art pultrusion
+                                lines</strong> running 24×7, producing a comprehensive range of structural shapes
+                            primarily used in cooling tower applications and many specialty applications. Our
+                            fabrication department is fully equipped — you provide the drawings, we deliver the finished
+                            product.
+                        </p>
+
+                        <p
+                            style="font-size:8pt; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--foreground); margin-bottom:2mm;">
+                            Available Profiles</p>
+                        <div style="display:flex; flex-wrap:wrap; gap:1.5mm; margin-bottom:4mm;">
+                            <span class="spec-tag">Angles (All Sizes)</span>
+                            <span class="spec-tag">C-Channels</span>
+                            <span class="spec-tag">Flat Bars</span>
+                            <span class="spec-tag">H-Beams</span>
+                            <span class="spec-tag">I-Beams</span>
+                            <span class="spec-tag">Round Pipes</span>
+                            <span class="spec-tag">Square Pipes</span>
+                            <span class="spec-tag">Custom Profiles</span>
+                        </div>
+
+                        <p
+                            style="font-size:8pt; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--foreground); margin-bottom:2mm;">
+                            Primary Application</p>
+                        <p
+                            style="font-size:8pt; color:var(--muted); line-height:1.6; background:#fff; padding:3mm 4mm; border-radius:3mm; border:1px solid var(--border);">
+                            Cooling tower structural components — square pipes, angles, and channels forming the
+                            backbone of cooling tower fill frameworks deployed worldwide. Also used in construction,
+                            electrical enclosures, marine, and specialty engineering.
+                        </p>
+                    </div>
+
+                    <div>
+                        <p
+                            style="font-size:8pt; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--foreground); margin-bottom:2mm;">
+                            Key Advantages</p>
+                        <div class="check-item">
+                            <div class="check-icon"></div><span>24×7 production with 20 dedicated pultrusion
+                                lines</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon"></div><span>3-stage quality inspection on every single piece</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon"></div><span>In-house fabrication for ready-to-use profiles</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon"></div><span>Tailor-made packing for safe international
+                                transit</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon"></div><span>Custom shapes available from customer drawings</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Line 02: Custom Moulding -->
+        <div style="background:#fff; padding:7mm 0;">
+            <div class="container">
+                <div class="grid-2" style="gap:7mm; align-items:start;">
+                    <div>
+                        <p
+                            style="font-size:8pt; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--foreground); margin-bottom:2mm;">
+                            Manufacturing Processes</p>
+                        <div class="process-step">
+                            <div class="process-bar"></div>
+                            <div class="process-content">
+                                <h4>Resin Infusion</h4>
+                                <p>Closed-mold process delivering outstanding fiber-to-resin ratios for structural
+                                    large-format parts.</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="process-bar"></div>
+                            <div class="process-content">
+                                <h4>Hand Lay-up</h4>
+                                <p>Skilled technicians apply fiberglass layers with precision for complex curvatures and
+                                    geometries.</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="process-bar"></div>
+                            <div class="process-content">
+                                <h4>Vacuum Bagging</h4>
+                                <p>Vacuum consolidation ensures void-free, high-density laminates for critical
+                                    structural components.</p>
+                            </div>
+                        </div>
+
+                        <p
+                            style="font-size:8pt; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--foreground); margin:3mm 0 2mm;">
+                            End-to-End Service</p>
+                        <div class="check-item">
+                            <div class="check-icon"></div><span>Product design & engineering from
+                                concept/drawings</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon"></div><span>Custom tooling and mold fabrication in-house</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon"></div><span>Serial production with strict QC at every stage</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon"></div><span>Fastest-growing nacelle cover supplier in Indian wind
+                                sector</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="badge" style="margin-bottom:3mm; display:inline-block;">Product Line 02</span>
+                        <h3 style="font-size:14pt; color:var(--foreground); margin-bottom:2mm;">Custom Moulding</h3>
+                        <p style="font-size:8.5pt; color:var(--muted); margin-bottom:3mm; line-height:1.65;">
+                            Our Custom Moulding department is focused primarily on the <strong
+                                style="color:var(--foreground);">Wind Energy Sector</strong>, with our prime product
+                            being the <strong style="color:var(--foreground);">Nacelle Cover</strong> — the aerodynamic
+                            housing that protects the wind turbine gearbox and generator.
+                        </p>
+                        <p style="font-size:8.5pt; color:var(--muted); line-height:1.65;">
+                            You have a design, concept, idea, or expectation — share it with us. Our engineering team
+                            takes it from concept to finished product, offering complete end-to-end solutions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bar">
+            <span class="brand">Graphene Composites LLP</span>
+            <span>graphenecomposites.in</span>
+            <span class="page-num">Page 3</span>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════
+     PAGE 4 — PRODUCTS: GRATING + FRP vs STEEL
+═══════════════════════════════════════════════════ -->
+    <div class="page page-break">
+        <div style="background:var(--primary); height:1mm; width:100%;"></div>
+
+        <!-- Logo header -->
+        <div class="page-header">
+            <span
+                style="font-size:7.5pt; color:var(--muted); font-family:var(--font-display); letter-spacing:0.05em;">Company
+                Brochure · Confidential</span>
+            <img src="artifacts/graphene-composites/public/graphene-logo.png" alt="Graphene Composites LLP" />
+        </div>
+
+        <!-- Product Line 03: FRP Grating -->
+        <div class="section container" style="padding-top:6mm; padding-bottom:5mm;">
+            <div class="grid-2" style="gap:7mm; align-items:start;">
+                <div>
+                    <span class="badge" style="margin-bottom:3mm; display:inline-block;">Product Line 03</span>
+                    <h3 style="font-size:14pt; color:var(--foreground); margin-bottom:2mm;">Molded FRP Grating</h3>
+                    <p style="font-size:8.5pt; color:var(--muted); margin-bottom:4mm; line-height:1.65;">
+                        Grating is one of the most common composite products — used across the world in large-scale
+                        industries as platforms, structural parts, walkways, and weather-resistant covers. We offer wide
+                        varieties of combinations tailored to specific requirements.
+                    </p>
+
+                    <p
+                        style="font-size:8pt; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--foreground); margin-bottom:2mm;">
+                        Specifications</p>
+                    <div class="grid-2" style="gap:2.5mm; margin-bottom:4mm;">
+                        <div class="card-secondary" style="padding:3mm 4mm;">
+                            <p
+                                style="font-size:7pt; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1mm;">
+                                Mesh Size</p>
+                            <p style="font-size:9.5pt; font-weight:700; color:var(--foreground);">38 × 38 mm</p>
+                            <p style="font-size:7.5pt; color:var(--muted);">Heights: 25mm & 38mm</p>
+                        </div>
+                        <div class="card-secondary" style="padding:3mm 4mm;">
+                            <p
+                                style="font-size:7pt; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1mm;">
+                                Full Panel</p>
+                            <p style="font-size:9.5pt; font-weight:700; color:var(--foreground);">1220 × 3660 mm</p>
+                            <p style="font-size:7.5pt; color:var(--muted);">Custom sizes available</p>
+                        </div>
+                        <div class="card-secondary" style="padding:3mm 4mm;">
+                            <p
+                                style="font-size:7pt; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1mm;">
+                                Resin Options</p>
+                            <p style="font-size:9.5pt; font-weight:700; color:var(--foreground);">Polyester</p>
+                            <p style="font-size:7.5pt; color:var(--muted);">+ Vinyl Ester available</p>
+                        </div>
+                        <div class="card-secondary" style="padding:3mm 4mm;">
+                            <p
+                                style="font-size:7pt; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1mm;">
+                                Colors</p>
+                            <p style="font-size:9.5pt; font-weight:700; color:var(--foreground);">Full Spectrum</p>
+                            <p style="font-size:7.5pt; color:var(--muted);">Custom color matching</p>
+                        </div>
+                    </div>
+
+                    <p
+                        style="font-size:8pt; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--foreground); margin-bottom:2mm;">
+                        Surface Finishes</p>
+                    <div style="display:flex; flex-wrap:wrap; gap:1.5mm;">
+                        <span class="spec-tag">Meniscus (Concave)</span>
+                        <span class="spec-tag">Gritted Anti-Slip</span>
+                        <span class="spec-tag">Flat Smooth</span>
+                        <span class="spec-tag">Chequered Plate</span>
+                    </div>
+                </div>
+
+                <div>
+                    <p
+                        style="font-size:8pt; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--foreground); margin-bottom:2mm;">
+                        Applications</p>
+                    <div style="display:flex; flex-wrap:wrap; gap:1.5mm; margin-bottom:4mm;">
+                        <span class="spec-tag">Cooling Towers</span>
+                        <span class="spec-tag">Chemical / Oil & Gas</span>
+                        <span class="spec-tag">Water & Wastewater</span>
+                        <span class="spec-tag">Pharmaceuticals</span>
+                        <span class="spec-tag">Pulp & Paper</span>
+                        <span class="spec-tag">Solar Plants</span>
+                        <span class="spec-tag">Telecommunication</span>
+                        <span class="spec-tag">Food & Beverages</span>
+                        <span class="spec-tag">Power & Utilities</span>
+                        <span class="spec-tag">Offshore Projects</span>
+                        <span class="spec-tag">Recreational Areas</span>
+                        <span class="spec-tag">Architectural Decking</span>
+                        <span class="spec-tag">Transportation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRP vs Steel -->
+        <div class="section-dark" style="padding:8mm 0;">
+            <div class="container">
+                <p class="label" style="color:var(--primary); margin-bottom:2mm;">Material Advantage</p>
+                <h3 style="font-size:14pt; color:#fff; margin-bottom:1mm;">The Advantage of FRP over Steel</h3>
+                <p style="font-size:8.5pt; color:rgba(255,255,255,0.65); margin-bottom:5mm;">Why modern industries are
+                    replacing traditional steel with Fiber Reinforced Plastics.</p>
+
+                <table>
+                    <thead>
+                        <tr style="border-bottom:1.5px solid rgba(255,255,255,0.2);">
+                            <th style="color:rgba(255,255,255,0.5); font-size:8pt; padding:2mm 3mm; font-weight:500;">
+                                Property</th>
+                            <th class="tg-head-main" style="padding:2mm 3mm;">FRP (Composites)</th>
+                            <th class="tg-head-alt" style="padding:2mm 3mm;">Steel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tg-prop">Weight</td>
+                            <td class="tg-yes">✓ &nbsp;60–80% Lighter</td>
+                            <td class="tg-no">✗ &nbsp;Heavy & Hard to handle</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-prop">Corrosion</td>
+                            <td class="tg-yes">✓ &nbsp;Excellent Resistance</td>
+                            <td class="tg-no">✗ &nbsp;Rusts, requires coating</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-prop">Conductivity</td>
+                            <td class="tg-yes">✓ &nbsp;Non-Conductive (Safe)</td>
+                            <td class="tg-no">✗ &nbsp;Highly Conductive</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-prop">Maintenance</td>
+                            <td class="tg-yes">✓ &nbsp;Virtually Zero</td>
+                            <td class="tg-no">✗ &nbsp;High (Repainting/Repair)</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-prop">Lifespan</td>
+                            <td class="tg-yes">✓ &nbsp;50+ Years</td>
+                            <td class="tg-no">✗ &nbsp;Shorter in harsh environments</td>
+                        </tr>
+                        <tr style="border-bottom:none;">
+                            <td class="tg-prop">Installation Cost</td>
+                            <td class="tg-yes">✓ &nbsp;50% Lower than Steel</td>
+                            <td class="tg-no">✗ &nbsp;High install & handling cost</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer-bar">
+            <span class="brand">Graphene Composites LLP</span>
+            <span>+91 96626 77211</span>
+            <span class="page-num">Page 4</span>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════
+     PAGE 5 — MANUFACTURING & TECHNOLOGY
+═══════════════════════════════════════════════════ -->
+    <div class="page page-break">
+        <div style="background:var(--primary); height:1mm; width:100%;"></div>
+
+        <!-- Logo header -->
+        <div class="page-header">
+            <span
+                style="font-size:7.5pt; color:var(--muted); font-family:var(--font-display); letter-spacing:0.05em;">Company
+                Brochure · Confidential</span>
+            <img src="artifacts/graphene-composites/public/graphene-logo.png" alt="Graphene Composites LLP" />
+        </div>
+
+        <div class="container" style="padding-top:6mm;">
+            <p class="label">Manufacturing & Infrastructure</p>
+            <h2 class="section-title" style="font-size:17pt;">State-of-the-Art Facility in India's Composites Hub</h2>
+            <div class="divider"></div>
+            <p class="section-subtitle">Located in Savli, Vadodara — a 400,000 sqft greenfield facility engineered for
+                global-scale production with zero compromise on quality.</p>
+        </div>
+
+        <!-- Facility Capabilities Grid -->
+        <div class="section-secondary" style="padding:7mm 0;">
+            <div class="container">
+                <div class="grid-3" style="gap:4mm;">
+                    <div class="card">
+                        <p
+                            style="font-size:9.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1.5mm;">
+                            400,000 Sqft Facility</p>
+                        <p style="font-size:8pt; color:var(--muted); line-height:1.5;">Greenfield, purpose-built
+                            facility in Savli, Vadodara designed for optimised workflow and massive output capacity.</p>
+                    </div>
+                    <div class="card">
+                        <p
+                            style="font-size:9.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1.5mm;">
+                            20 Pultrusion Lines</p>
+                        <p style="font-size:8pt; color:var(--muted); line-height:1.5;">Running 24×7 with automated
+                            control systems ensuring consistent quality across every production run.</p>
+                    </div>
+                    <div class="card">
+                        <p
+                            style="font-size:9.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1.5mm;">
+                            3-Stage Quality Control</p>
+                        <p style="font-size:8pt; color:var(--muted); line-height:1.5;">Every single piece passes three
+                            independent inspection stages — 100% piece inspection, not batch sampling.</p>
+                    </div>
+                    <div class="card">
+                        <p
+                            style="font-size:9.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1.5mm;">
+                            Custom Fabrication</p>
+                        <p style="font-size:8pt; color:var(--muted); line-height:1.5;">Fully equipped fabrication for
+                            precision cutting, drilling, and assembly. Provide drawings; we deliver ready-to-use
+                            products.</p>
+                    </div>
+                    <div class="card">
+                        <p
+                            style="font-size:9.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1.5mm;">
+                            In-house Tooling & Design</p>
+                        <p style="font-size:8pt; color:var(--muted); line-height:1.5;">Complete engineering and tooling
+                            team capable of developing custom molds and jigs for any geometry.</p>
+                    </div>
+                    <div class="card">
+                        <p
+                            style="font-size:9.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1.5mm;">
+                            Tailor-made Packing</p>
+                        <p style="font-size:8pt; color:var(--muted); line-height:1.5;">In-house packaging team designs
+                            custom crates and pallets, ensuring safe international transit with full traceability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location Advantages -->
+        <div class="section-primary" style="padding:6mm 0;">
+            <div class="container">
+                <p
+                    style="text-align:center; font-size:11pt; font-family:var(--font-display); font-weight:700; color:#fff; margin-bottom:4mm;">
+                    Strategic Location Advantages — Savli, Vadodara</p>
+                <div class="grid-4" style="text-align:center; gap:3mm;">
+                    <div>
+                        <p
+                            style="font-size:16pt; font-weight:800; font-family:var(--font-display); color:#fff; line-height:1;">
+                            150 km</p>
+                        <p
+                            style="font-size:7pt; color:rgba(255,255,255,0.75); text-transform:uppercase; letter-spacing:0.08em; margin-top:1mm;">
+                            From JNPT Seaport</p>
+                    </div>
+                    <div>
+                        <p
+                            style="font-size:16pt; font-weight:800; font-family:var(--font-display); color:#fff; line-height:1;">
+                            Hub</p>
+                        <p
+                            style="font-size:7pt; color:rgba(255,255,255,0.75); text-transform:uppercase; letter-spacing:0.08em; margin-top:1mm;">
+                            India's Composites Capital</p>
+                    </div>
+                    <div>
+                        <p
+                            style="font-size:16pt; font-weight:800; font-family:var(--font-display); color:#fff; line-height:1;">
+                            150+</p>
+                        <p
+                            style="font-size:7pt; color:rgba(255,255,255,0.75); text-transform:uppercase; letter-spacing:0.08em; margin-top:1mm;">
+                            Skilled Professionals</p>
+                    </div>
+                    <div>
+                        <p
+                            style="font-size:16pt; font-weight:800; font-family:var(--font-display); color:#fff; line-height:1;">
+                            Multi-modal</p>
+                        <p
+                            style="font-size:7pt; color:rgba(255,255,255,0.75); text-transform:uppercase; letter-spacing:0.08em; margin-top:1mm;">
+                            Road / Rail / Air Access</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Departments & Technology -->
+        <div class="container" style="padding-top:7mm; padding-bottom:5mm;">
+            <div class="grid-2" style="gap:7mm;">
+                <div>
+                    <p class="label" style="margin-bottom:2mm;">Plant Layout</p>
+                    <h4 style="font-size:11pt; margin-bottom:3mm;">Dedicated Production Departments</h4>
+                    <div style="display:flex; flex-wrap:wrap; gap:2mm;">
+                        <span class="spec-tag">Dispatch Area</span>
+                        <span class="spec-tag">Pultrusion Dept</span>
+                        <span class="spec-tag">Maintenance Dept</span>
+                        <span class="spec-tag">Resin Mixing</span>
+                        <span class="spec-tag">Moulding Dept</span>
+                        <span class="spec-tag">Steel Fabrication</span>
+                        <span class="spec-tag">Laboratory</span>
+                        <span class="spec-tag">Fabrication Area</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="label" style="margin-bottom:2mm;">Technology</p>
+                    <h4 style="font-size:11pt; margin-bottom:2mm;">Automated Control Systems</h4>
+                    <p style="font-size:8.5pt; color:var(--muted); line-height:1.65;">
+                        We deploy <strong style="color:var(--foreground);">proprietary automated PLCs</strong> on our
+                        production lines — a capability unique in the Indian composites industry. This system
+                        scientifically controls temperature, pull speed, and resin flow, removing human error entirely.
+                        Combined with our 150+ skilled professionals, every batch meets exact specifications —
+                        consistently, across every order.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bar">
+            <span class="brand">Graphene Composites LLP</span>
+            <span>Opp. Baroda Dairy, Savli-Jarod Rd, Gothda, Vadodara 391770</span>
+            <span class="page-num">Page 5</span>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════════════════════════════════════════
+     PAGE 6 — INDUSTRIES + QUALITY + CONTACT
+═══════════════════════════════════════════════════ -->
+    <div class="page page-break">
+        <div style="background:var(--primary); height:1mm; width:100%;"></div>
+
+        <!-- Logo header -->
+        <div class="page-header">
+            <span
+                style="font-size:7.5pt; color:var(--muted); font-family:var(--font-display); letter-spacing:0.05em;">Company
+                Brochure · Confidential</span>
+            <img src="artifacts/graphene-composites/public/graphene-logo.png" alt="Graphene Composites LLP" />
+        </div>
+
+        <!-- Industries -->
+        <div class="section container" style="padding-top:6mm; padding-bottom:6mm;">
+            <p class="label">Industries Served</p>
+            <h2 class="section-title" style="font-size:16pt;">Global Industries We Power</h2>
+            <div class="divider"></div>
+            <p class="section-subtitle">Advanced FRP solutions providing critical infrastructure across the world's most
+                demanding sectors.</p>
+
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:3mm;">
+                <div class="card" style="text-align:center; padding:3mm 2mm;">
+                    <p
+                        style="font-size:8.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1mm;">
+                        Wind Energy</p>
+                    <p style="font-size:7pt; color:var(--muted); line-height:1.4;">Nacelle covers and structural
+                        components</p>
+                </div>
+                <div class="card" style="text-align:center; padding:3mm 2mm;">
+                    <p
+                        style="font-size:8.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1mm;">
+                        Cooling Towers</p>
+                    <p style="font-size:7pt; color:var(--muted); line-height:1.4;">Structural backbone profiles</p>
+                </div>
+                <div class="card" style="text-align:center; padding:3mm 2mm;">
+                    <p
+                        style="font-size:8.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1mm;">
+                        Chemical / Oil & Gas</p>
+                    <p style="font-size:7pt; color:var(--muted); line-height:1.4;">Corrosion-resistant gratings</p>
+                </div>
+                <div class="card" style="text-align:center; padding:3mm 2mm;">
+                    <p
+                        style="font-size:8.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1mm;">
+                        Water & Wastewater</p>
+                    <p style="font-size:7pt; color:var(--muted); line-height:1.4;">Rust-free treatment facility grating
+                    </p>
+                </div>
+                <div class="card" style="text-align:center; padding:3mm 2mm;">
+                    <p
+                        style="font-size:8.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1mm;">
+                        Solar Power</p>
+                    <p style="font-size:7pt; color:var(--muted); line-height:1.4;">300mm grating walkways for solar
+                        plants</p>
+                </div>
+                <div class="card" style="text-align:center; padding:3mm 2mm;">
+                    <p
+                        style="font-size:8.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1mm;">
+                        Pharmaceuticals</p>
+                    <p style="font-size:7pt; color:var(--muted); line-height:1.4;">Hygienic clean-room platforms</p>
+                </div>
+                <div class="card" style="text-align:center; padding:3mm 2mm;">
+                    <p
+                        style="font-size:8.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1mm;">
+                        Offshore & Marine</p>
+                    <p style="font-size:7pt; color:var(--muted); line-height:1.4;">Saltwater-resistant composites</p>
+                </div>
+                <div class="card" style="text-align:center; padding:3mm 2mm;">
+                    <p
+                        style="font-size:8.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:1mm;">
+                        Construction & Arch.</p>
+                    <p style="font-size:7pt; color:var(--muted); line-height:1.4;">Custom profiles for modern projects
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quality -->
+        <div class="section-dark" style="padding:7mm 0;">
+            <div class="container">
+                <p class="label" style="color:var(--primary); margin-bottom:2mm;">Quality Assurance</p>
+                <h3 style="font-size:14pt; color:#fff; margin-bottom:4mm;">Uncompromising Quality — Zero Defect Policy
+                </h3>
+                <div class="grid-2" style="gap:5mm;">
+                    <div>
+                        <p style="font-size:8.5pt; color:rgba(255,255,255,0.75); line-height:1.65; margin-bottom:3mm;">
+                            At Graphene Composites, quality is not a final step — it is embedded in our culture and
+                            every phase of our manufacturing process. From raw material sourcing to final dispatch, our
+                            zero-defect policy ensures global competitiveness.
+                        </p>
+                        <p
+                            style="font-size:8pt; color:var(--primary); font-style:italic; font-family:var(--font-display); font-weight:600; border-left: 2px solid var(--primary); padding-left:3mm;">
+                            "Every piece is scientifically inspected. We do not rely on batch sampling."
+                        </p>
+                    </div>
+                    <div>
+                        <div class="check-item" style="margin-bottom:1.5mm;">
+                            <div class="check-icon"></div><span style="color:rgba(255,255,255,0.85);">ISO 9001:2015
+                                Certified Operations</span>
+                        </div>
+                        <div class="check-item" style="margin-bottom:1.5mm;">
+                            <div class="check-icon"></div><span style="color:rgba(255,255,255,0.85);">Stringent Raw
+                                Material Supplier Evaluation</span>
+                        </div>
+                        <div class="check-item" style="margin-bottom:1.5mm;">
+                            <div class="check-icon"></div><span style="color:rgba(255,255,255,0.85);">Automated Control
+                                Systems for exact parameter adherence</span>
+                        </div>
+                        <div class="check-item" style="margin-bottom:1.5mm;">
+                            <div class="check-icon"></div><span style="color:rgba(255,255,255,0.85);">Rigorous 3-Stage
+                                Quality Inspection per piece</span>
+                        </div>
+                        <div class="check-item" style="margin-bottom:1.5mm;">
+                            <div class="check-icon"></div><span style="color:rgba(255,255,255,0.85);">Full support for
+                                Third-Party Inspections</span>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon"></div><span style="color:rgba(255,255,255,0.85);">Consistent Quality
+                                + Assured Timelines</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="container" style="padding-top:7mm; padding-bottom:6mm;">
+            <p class="label" style="margin-bottom:2mm;">Contact Us</p>
+            <h3 style="font-size:14pt; margin-bottom:4mm;">Get in Touch</h3>
+            <div class="grid-2" style="gap:6mm;">
+                <div>
+                    <div class="contact-row">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <p class="contact-label">Headquarters & Plant</p>
+                            <p class="contact-value">Opp. Baroda Dairy, Savli-Jarod Road,<br />Gothda, Vadodara, Gujarat
+                                — 391770, India</p>
+                        </div>
+                    </div>
+                    <div class="contact-row">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <p class="contact-label">Phone</p>
+                            <p class="contact-value">+91 96626 77211</p>
+                        </div>
+                    </div>
+                    <div class="contact-row">
+                        <div class="contact-icon">✉</div>
+                        <div>
+                            <p class="contact-label">Email</p>
+                            <p class="contact-value">sanjay@graphenecomposites.in</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-accent" style="padding:5mm 6mm;">
+                    <p
+                        style="font-size:9.5pt; font-weight:700; font-family:var(--font-display); color:var(--foreground); margin-bottom:2mm;">
+                        Contract Manufacturing</p>
+                    <p style="font-size:8pt; color:var(--muted); line-height:1.6; margin-bottom:3mm;">
+                        We serve as a reliable backbone for global OEMs and distributors — offering complete
+                        transparency, 100% traceability, assured timelines, and global export expertise.
+                    </p>
+                    <div class="check-item">
+                        <div class="check-icon"></div><span>Complete process visibility for partners</span>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon"></div><span>Full ERP-backed material traceability</span>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon"></div><span>Export documentation (COC, COA, B/L)</span>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon"></div><span>Annual volume pricing available</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final CTA strip -->
+        <div class="section-primary" style="padding:5mm 0; text-align:center;">
+            <div class="container">
+                <p
+                    style="font-size:12pt; font-family:var(--font-display); font-weight:700; color:#fff; margin-bottom:1mm;">
+                    Ready to Source from India's Leading FRP Manufacturer?</p>
+                <p style="font-size:8.5pt; color:rgba(255,255,255,0.85);">Send us your specifications:
+                    <strong>sanjay@graphenecomposites.in</strong> &nbsp;|&nbsp; <strong>+91 96626 77211</strong>
+                    &nbsp;|&nbsp; <strong>graphenecomposites.in</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bar">
+            <span class="brand">Graphene Composites LLP</span>
+            <span>© 2024 Graphene Composites LLP. All rights reserved.</span>
+            <span class="page-num">Page 6</span>
+        </div>
+    </div>
+
+</body>
+
+</html>

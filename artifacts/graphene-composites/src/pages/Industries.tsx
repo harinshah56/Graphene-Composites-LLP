@@ -3,6 +3,25 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Wind, Waves, Beaker, Factory, Shield, Sun, Droplets, HardHat, Building2, Ship, Train, Tent } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-100px" },
+  transition: { duration: 0.6 }
+};
+
+const staggerContainer = {
+  initial: { opacity: 0 },
+  whileInView: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  },
+  viewport: { once: true, margin: "-100px" }
+};
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -59,25 +78,39 @@ export default function Industries() {
       {/* Header */}
       <div className="pt-32 pb-16 lg:pt-40 bg-secondary border-b border-border text-center">
         <div className="max-w-4xl mx-auto px-4">
-          <p className="text-primary font-semibold uppercase tracking-widest text-sm mb-3">Industries Served</p>
-          <h1 className="text-4xl md:text-5xl font-bold font-display text-foreground mb-5">
-            Global Industries We Power
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Our advanced FRP solutions provide critical infrastructure across some of the world's most 
-            demanding sectors — from wind energy to offshore platforms.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-primary font-semibold uppercase tracking-widest text-sm mb-3">Industries Served</p>
+            <h1 className="text-4xl md:text-5xl font-bold font-display text-foreground mb-5">
+              Global Industries We Power
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Our advanced FRP solutions provide critical infrastructure across some of the world's most
+              demanding sectors — from wind energy to offshore platforms.
+            </p>
+          </motion.div>
         </div>
       </div>
 
       {/* Industries Grid */}
       <div className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+          >
             {INDUSTRIES.map((ind, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="bg-white border border-border p-5 rounded-xl flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-md transition-all duration-300 group text-center"
+                className="bg-white border border-border p-5 rounded-xl flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-md transition-all duration-300 group text-center cursor-default"
+                variants={fadeInUp}
+                whileHover={{ y: -5 }}
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
                   <ind.icon className="w-7 h-7 text-primary group-hover:text-white transition-colors" />
@@ -86,9 +119,9 @@ export default function Industries() {
                   <h3 className="font-bold text-foreground font-display text-sm">{ind.name}</h3>
                   <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{ind.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -109,23 +142,34 @@ export default function Industries() {
             {FEATURED_APPLICATIONS.map((app, i) => (
               <div
                 key={i}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                  i % 2 === 1 ? "lg:grid-flow-dense" : ""
-                }`}
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center overflow-hidden ${i % 2 === 1 ? "lg:grid-flow-dense" : ""
+                  }`}
               >
-                <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl ${i % 2 === 1 ? "lg:col-start-2" : ""}`}>
+                <motion.div
+                  className={`relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl ${i % 2 === 1 ? "lg:col-start-2" : ""}`}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                >
                   <img
                     src={app.img}
                     alt={app.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   />
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-bold rounded-full uppercase tracking-wider">
                       {app.product}
                     </span>
                   </div>
-                </div>
-                <div className={i % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}>
+                </motion.div>
+                <motion.div
+                  className={i % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? 50 : -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                >
                   <h3 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-4">
                     {app.title}
                   </h3>
@@ -138,7 +182,7 @@ export default function Industries() {
                       <span className="ml-2 group-hover:translate-x-1 transition-transform inline-block">→</span>
                     </Button>
                   </Link>
-                </div>
+                </motion.div>
               </div>
             ))}
           </div>
@@ -146,13 +190,19 @@ export default function Industries() {
       </div>
 
       {/* CTA */}
-      <div className="py-16 bg-foreground text-white text-center">
+      <motion.div
+        className="py-16 bg-foreground text-white text-center"
+        variants={fadeInUp}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+      >
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl font-bold font-display mb-4">
             Your Industry Not Listed?
           </h2>
           <p className="text-gray-300 mb-8">
-            Our engineering team works across virtually any industry requiring high-performance, 
+            Our engineering team works across virtually any industry requiring high-performance,
             corrosion-resistant composite solutions. Contact us to discuss your specific application.
           </p>
           <Link href="/contact">
@@ -161,7 +211,7 @@ export default function Industries() {
             </Button>
           </Link>
         </div>
-      </div>
+      </motion.div>
     </PageLayout>
   );
 }

@@ -13,6 +13,17 @@ const fadeInUp = {
   transition: { duration: 0.6 }
 };
 
+const staggerContainer = {
+  initial: { opacity: 0 },
+  whileInView: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  },
+  viewport: { once: true, margin: "-100px" }
+};
+
 export default function Home() {
   return (
     <PageLayout>
@@ -21,9 +32,9 @@ export default function Home() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src={`${import.meta.env.BASE_URL}images/products/image11.jpeg`}
-            alt="Graphene Composites Manufacturing Facility"
-            className="w-full h-full object-cover opacity-30 grayscale contrast-125 mix-blend-overlay"
+            src={`${import.meta.env.BASE_URL}images/products/pultrusion_4.png`}
+            alt="Graphene Composites High-Precision Pultruded Profiles"
+            className="w-full h-full object-cover opacity-40 grayscale contrast-125 mix-blend-overlay"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#1a1c1e] via-[#1a1c1e]/90 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1a1c1e] via-transparent to-transparent" />
@@ -75,7 +86,13 @@ export default function Home() {
 
       {/* STATS BAR */}
       <section className="bg-primary text-primary-foreground py-12 relative z-20 -mt-8 mx-4 sm:mx-8 lg:mx-auto max-w-7xl rounded-2xl shadow-xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8">
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 px-8"
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+        >
           {[
             { icon: Factory, value: "400,000", label: "Sqft Facility" },
             { icon: Zap, value: "20+", label: "Pultrusion Lines" },
@@ -85,17 +102,14 @@ export default function Home() {
             <motion.div
               key={i}
               className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              variants={fadeInUp}
             >
               <stat.icon className="w-8 h-8 mx-auto mb-3 opacity-80" />
               <div className="text-3xl md:text-4xl font-bold font-display mb-1">{stat.value}</div>
               <div className="text-primary-foreground/80 font-medium text-sm md:text-base uppercase tracking-wider">{stat.label}</div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* ABOUT INTRO */}
@@ -160,12 +174,25 @@ export default function Home() {
       {/* PRODUCTS PREVIEW */}
       <section className="py-24 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            title="Our Product Portfolio"
-            subtitle="Precision-engineered composite solutions for demanding environments."
-          />
+          <motion.div
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+          >
+            <SectionHeader
+              title="Our Product Portfolio"
+              subtitle="Precision-engineered composite solutions for demanding environments."
+            />
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+          >
             {[
               {
                 title: "Pultruded Profiles",
@@ -191,31 +218,34 @@ export default function Home() {
             ].map((prod, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
+                variants={fadeInUp}
               >
-                <Card className="h-full group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-border/50 overflow-hidden bg-white">
-                  <div className="relative h-52 overflow-hidden">
-                    <img src={prod.img} alt={prod.imgAlt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold font-display mb-3 text-foreground">{prod.title}</h3>
-                    <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
-                      {prod.desc}
-                    </p>
-                    <Link href={prod.link}>
-                      <span className="text-primary font-semibold flex items-center hover:text-primary/80 transition-colors cursor-pointer text-sm">
+                <Link href={prod.link}>
+                  <Card className="h-full group hover:shadow-xl transition-all duration-300 border-border/50 overflow-hidden bg-white cursor-pointer active:scale-[0.98]">
+                    <div className="relative h-52 overflow-hidden">
+                      <motion.img
+                        src={prod.img}
+                        alt={prod.imgAlt}
+                        className="w-full h-full object-cover"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.4 }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent opacity-60" />
+                    </div>
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-bold font-display mb-3 text-foreground group-hover:text-primary transition-colors">{prod.title}</h3>
+                      <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
+                        {prod.desc}
+                      </p>
+                      <div className="text-primary font-semibold flex items-center hover:text-primary/80 transition-colors text-sm">
                         View Details <ArrowRight className="ml-2 w-4 h-4" />
-                      </span>
-                    </Link>
-                  </CardContent>
-                </Card>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
