@@ -198,15 +198,15 @@ export default function Home() {
                 title: "Pultruded Profiles",
                 desc: "20 automated lines producing standard and custom shapes (I-Beams, Channels, Angles) for structural and cooling tower applications.",
                 link: "/products#pultrusion",
-                img: `${import.meta.env.BASE_URL}images/products/image10.jpeg`,
-                imgAlt: "Pultruded FRP square tube profiles"
+                img: `${import.meta.env.BASE_URL}images/products/pultrusion_1.png`,
+                imgAlt: "Pultruded FRP structural profiles"
               },
               {
                 title: "Custom Moulding",
                 desc: "Specialized in Nacelle Covers for Wind Energy using Infusion, Hand Lay-up, and Vacuum Bagging techniques.",
                 link: "/products#moulding",
-                img: `${import.meta.env.BASE_URL}images/products/image6.jpeg`,
-                imgAlt: "FRP wind turbine nacelle covers"
+                img: `${import.meta.env.BASE_URL}images/products/moulding_1.png`,
+                imgAlt: "Custom FRP nacelle covers for wind turbines"
               },
               {
                 title: "Molded FRP Grating",

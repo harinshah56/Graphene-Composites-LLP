@@ -2,6 +2,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { motion } from "framer-motion";
 import { Target, Flag, Award, Factory } from "lucide-react";
+import { GrowthDashboard } from "@/components/sections/GrowthDashboard";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -95,6 +96,13 @@ export default function About() {
               ))}
             </motion.div>
           </div>
+        </div>
+      </div>
+
+      <div className="py-24 bg-secondary/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader title="Our Growth Story" subtitle="Data-driven insights into our journey and impact" />
+          <GrowthDashboard />
         </div>
       </div>
 

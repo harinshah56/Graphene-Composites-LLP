@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { Logo } from "@/components/ui/Logo";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -40,21 +41,8 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 z-50 relative">
-          <img
-            src="/graphene-logo.png"
-            alt="Graphene Composites Logo"
-            className={`transition-all duration-300 ${isScrolled ? "h-10" : "h-12"}`}
-            onError={(e) => {
-              // Fallback if image fails to load
-              e.currentTarget.style.display = 'none';
-              e.currentTarget.nextElementSibling?.classList.remove('hidden');
-            }}
-          />
-          <div className="hidden font-display font-bold text-xl leading-tight">
-            <span className="text-primary">Graphene</span><br />
-            <span className="text-foreground">Composites</span>
-          </div>
+        <Link href="/" className="flex items-center z-50 relative h-14">
+          <Logo className={`transition-all duration-300 w-auto ${isScrolled ? "h-11" : "h-14"}`} />
         </Link>
 
         {/* Desktop Nav */}

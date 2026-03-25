@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/ui/Logo";
 
 export function Footer() {
   return (
@@ -10,8 +11,8 @@ export function Footer() {
 
           {/* Brand Col */}
           <div className="space-y-6">
-            <div className="bg-white inline-block p-3 rounded-xl shadow-lg">
-              <img src="/graphene-logo.png" alt="Graphene Composites" className="h-10" />
+            <div className="inline-block transition-transform hover:scale-105 duration-300">
+              <Logo light className="h-16 w-auto" />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               India's premier FRP manufacturer, delivering advanced composite solutions globally.

@@ -30,6 +30,7 @@ const PULTRUSION_IMAGES = [
   { src: `${BASE}images/products/pultrusion_3.png`, alt: "High-precision pultruded white square tubes" },
   { src: `${BASE}images/products/pultrusion_2.png`, alt: "Pultruded black angles and square profiles" },
   { src: `${BASE}images/products/pultrusion_4.png`, alt: "Close-up of pultruded FRP profiles batch" },
+  { src: `${BASE}images/products/pultrusion_5.png`, alt: "Automated precision pultrusion of structural shapes" },
 ];
 
 const MOULDING_IMAGES = [
@@ -87,9 +88,9 @@ export default function Products() {
       <div className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-foreground text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src={`${BASE}images/products/image11.jpeg`}
+            src={`${BASE}images/products/pultrusion_4.png`}
             alt="Manufacturing facility"
-            className="w-full h-full object-cover opacity-25"
+            className="w-full h-full object-cover opacity-20 grayscale contrast-125"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/90 to-foreground/60" />
         </div>

@@ -64,7 +64,7 @@ const FEATURED_APPLICATIONS = [
     link: "/products#grating",
   },
   {
-    img: `${BASE}images/products/image6.jpeg`,
+    img: `${BASE}images/products/moulding_1.png`,
     title: "Wind Energy — Nacelle Covers",
     desc: "Large-format FRP nacelle covers protect the turbine gearbox and generator from harsh weather conditions. We are one of the fastest-growing nacelle cover suppliers in the Indian wind sector, targeting global markets.",
     product: "Custom Moulding",

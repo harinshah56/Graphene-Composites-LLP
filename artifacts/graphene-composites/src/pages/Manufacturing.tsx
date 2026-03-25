@@ -332,7 +332,7 @@ export default function Manufacturing() {
               transition={{ duration: 0.7 }}
             >
               <img
-                src={`${BASE}images/products/image9.jpeg`}
+                src={`${BASE}images/products/pultrusion_3.png`}
                 alt="Precision pultruded profile — automated process"
                 className="w-full h-full object-cover"
               />
