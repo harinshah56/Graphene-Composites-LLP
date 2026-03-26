@@ -90,7 +90,7 @@ export default function Products() {
           <img
             src={`${BASE}images/products/pultrusion_4.png`}
             alt="Manufacturing facility"
-            className="w-full h-full object-cover opacity-20 grayscale contrast-125"
+            className="w-full h-full object-cover opacity-55 grayscale contrast-125"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/90 to-foreground/60" />
         </div>

@@ -7,7 +7,7 @@ interface LogoProps {
 
 export function Logo({ className = "", light = false }: LogoProps) {
     const primaryColor = "#56B15B"; // Hand-picked from the logo's green HSL(127, 51%, 48%)
-    const textColor = light ? "#FFFFFF" : "#1A1C1E"; // White for dark backgrounds, Navy-Black for light
+    const textColor = light ? "#FFFFFF" : "#2D3135"; // White for dark backgrounds, Charcoal for light
 
     return (
         <svg

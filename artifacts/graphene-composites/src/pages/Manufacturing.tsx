@@ -102,7 +102,7 @@ export default function Manufacturing() {
           <img
             src={`${BASE}images/products/image13.jpeg`}
             alt="Graphene Composites Manufacturing Facility"
-            className="w-full h-full object-cover opacity-35"
+            className="w-full h-full object-cover opacity-50"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/85 to-foreground/50" />
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-transparent" />

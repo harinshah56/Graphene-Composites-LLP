@@ -1,5 +1,6 @@
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle2, Factory, Globe2, Users, ChevronRight, ShieldCheck, Zap, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -24,20 +25,45 @@ const staggerContainer = {
   viewport: { once: true, margin: "-100px" }
 };
 
+const HERO_IMAGES = [
+  "images/products/pultrusion_4.png",
+  "images/products/pultrusion_1.png",
+  "images/products/pultrusion_2.png",
+  "images/products/moulding_1.png",
+  "images/products/moulding_2.png",
+  "images/products/pultrusion_5.png",
+];
+
 export default function Home() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <PageLayout>
       {/* HERO SECTION */}
-      <section className="relative min-h-[90vh] flex items-center bg-[#1a1c1e] overflow-hidden">
-        {/* Background Image with Overlay */}
+      <section className="relative min-h-[90vh] flex items-center bg-[#2d3135] overflow-hidden">
+        {/* Background Image Carousel with Overlay */}
         <div className="absolute inset-0 z-0">
-          <img
-            src={`${import.meta.env.BASE_URL}images/products/pultrusion_4.png`}
-            alt="Graphene Composites High-Precision Pultruded Profiles"
-            className="w-full h-full object-cover opacity-40 grayscale contrast-125 mix-blend-overlay"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a1c1e] via-[#1a1c1e]/90 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1a1c1e] via-transparent to-transparent" />
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentImageIndex}
+              src={`${import.meta.env.BASE_URL}${HERO_IMAGES[currentImageIndex]}`}
+              alt="Graphene Composites High-Precision Products"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.65 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="w-full h-full object-cover grayscale contrast-125 mix-blend-overlay"
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#2d3135] via-[#2d3135]/90 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#2d3135] via-transparent to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-20">
